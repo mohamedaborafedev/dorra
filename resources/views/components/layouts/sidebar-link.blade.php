@@ -1,6 +1,6 @@
 @props(['active' => false, 'href' => '#', 'icon' => null])
 <li>
-    <a href="{{ $href }}" @class([
+    <a href="{{ $href }}" aria-label="{{ trim($slot) }}" title="{{ trim($slot) }}" @if($active) aria-current="page" @endif @class([
         'flex items-center text-sm rounded-md px-3 py-2 justify-center transition-colors duration-200',
         'bg-sidebar-accent text-sidebar-accent-foreground font-medium' => $active,
         'hover:bg-sidebar-accent hover:text-sidebar-accent-foreground text-sidebar-foreground' => !$active,

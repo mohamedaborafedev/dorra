@@ -3,7 +3,7 @@
     <div class="flex items-center justify-between h-16 px-4">
         <!-- Left side: Logo and toggle -->
         <div class="flex items-center">
-            <button @click="toggleSidebar"
+            <button @click="toggleSidebar" type="button" aria-label="Toggle navigation" :aria-expanded="sidebarOpen.toString()"
                 class="p-2 rounded-md text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 focus:outline-none">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
