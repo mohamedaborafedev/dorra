@@ -1,0 +1,2457 @@
+{
+    "started_at_utc": "2026-10-28T13:19:51+00:00",
+    "php": "8.4.12",
+    "laravel": "12.70.2",
+    "os": "Windows",
+    "client": "Laravel PDO, hrtime around SELECT plus fetchAll, local TCP; no HTTP\/render\/images",
+    "server": {
+        "version": "8.4.3",
+        "os": "Win64",
+        "architecture": "x86_64",
+        "buffer_pool_bytes": 134217728,
+        "isolation": "REPEATABLE-READ",
+        "timezone": "+00:00",
+        "collation": "utf8mb4_unicode_ci"
+    },
+    "runs_per_variant": 20,
+    "warmups_per_variant": 3,
+    "method": "Same read-only repeatable-read snapshot; alternating baseline\/indexed order per round. Baseline ignores only the three candidate secondary indexes; primary index retained. Not a physical drop\/rebuild comparison.",
+    "cache": "Warm-buffer experiment: full dataset fingerprint scan and explicit warmups. No cache flush\/restart, no OS cache control, no cold-cache claim. EXPLAIN ANALYZE is outside timed samples. MySQL 8 has no query result cache. Other local workloads are not isolated.",
+    "indexes": [
+        {
+            "Table": "designs",
+            "Non_unique": 0,
+            "Key_name": "PRIMARY",
+            "Seq_in_index": 1,
+            "Column_name": "id",
+            "Collation": "A",
+            "Cardinality": 99456,
+            "Sub_part": null,
+            "Packed": null,
+            "Null": "",
+            "Index_type": "BTREE",
+            "Comment": "",
+            "Index_comment": "",
+            "Visible": "YES",
+            "Expression": null
+        },
+        {
+            "Table": "designs",
+            "Non_unique": 1,
+            "Key_name": "idx_designs_category_status_created",
+            "Seq_in_index": 1,
+            "Column_name": "category_id",
+            "Collation": "A",
+            "Cardinality": 9,
+            "Sub_part": null,
+            "Packed": null,
+            "Null": "",
+            "Index_type": "BTREE",
+            "Comment": "",
+            "Index_comment": "",
+            "Visible": "YES",
+            "Expression": null
+        },
+        {
+            "Table": "designs",
+            "Non_unique": 1,
+            "Key_name": "idx_designs_category_status_created",
+            "Seq_in_index": 2,
+            "Column_name": "status",
+            "Collation": "A",
+            "Cardinality": 19,
+            "Sub_part": null,
+            "Packed": null,
+            "Null": "",
+            "Index_type": "BTREE",
+            "Comment": "",
+            "Index_comment": "",
+            "Visible": "YES",
+            "Expression": null
+        },
+        {
+            "Table": "designs",
+            "Non_unique": 1,
+            "Key_name": "idx_designs_category_status_created",
+            "Seq_in_index": 3,
+            "Column_name": "created_at",
+            "Collation": "A",
+            "Cardinality": 97320,
+            "Sub_part": null,
+            "Packed": null,
+            "Null": "YES",
+            "Index_type": "BTREE",
+            "Comment": "",
+            "Index_comment": "",
+            "Visible": "YES",
+            "Expression": null
+        },
+        {
+            "Table": "designs",
+            "Non_unique": 1,
+            "Key_name": "idx_designs_category_status_created",
+            "Seq_in_index": 4,
+            "Column_name": "id",
+            "Collation": "A",
+            "Cardinality": 99456,
+            "Sub_part": null,
+            "Packed": null,
+            "Null": "",
+            "Index_type": "BTREE",
+            "Comment": "",
+            "Index_comment": "",
+            "Visible": "YES",
+            "Expression": null
+        },
+        {
+            "Table": "designs",
+            "Non_unique": 1,
+            "Key_name": "idx_designs_title",
+            "Seq_in_index": 1,
+            "Column_name": "title",
+            "Collation": "A",
+            "Cardinality": 94069,
+            "Sub_part": null,
+            "Packed": null,
+            "Null": "",
+            "Index_type": "BTREE",
+            "Comment": "",
+            "Index_comment": "",
+            "Visible": "YES",
+            "Expression": null
+        },
+        {
+            "Table": "designs",
+            "Non_unique": 1,
+            "Key_name": "idx_designs_created_id",
+            "Seq_in_index": 1,
+            "Column_name": "created_at",
+            "Collation": "A",
+            "Cardinality": 99456,
+            "Sub_part": null,
+            "Packed": null,
+            "Null": "YES",
+            "Index_type": "BTREE",
+            "Comment": "",
+            "Index_comment": "",
+            "Visible": "YES",
+            "Expression": null
+        },
+        {
+            "Table": "designs",
+            "Non_unique": 1,
+            "Key_name": "idx_designs_created_id",
+            "Seq_in_index": 2,
+            "Column_name": "id",
+            "Collation": "A",
+            "Cardinality": 99456,
+            "Sub_part": null,
+            "Packed": null,
+            "Null": "",
+            "Index_type": "BTREE",
+            "Comment": "",
+            "Index_comment": "",
+            "Visible": "YES",
+            "Expression": null
+        }
+    ],
+    "table": {
+        "ENGINE": "InnoDB",
+        "TABLE_COLLATION": "utf8mb4_unicode_ci",
+        "DATA_LENGTH": 12075008,
+        "INDEX_LENGTH": 18432000
+    },
+    "dataset_before": {
+        "rows": 100000,
+        "sha256": "6c3d8092fd73dd39e7626106e4830cc16ac8ac460d1643ff23e9f0cb190c115b"
+    },
+    "cache_counters_before": [
+        {
+            "Variable_name": "Innodb_buffer_pool_read_requests",
+            "Value": "5426489"
+        },
+        {
+            "Variable_name": "Innodb_buffer_pool_reads",
+            "Value": "1106"
+        }
+    ],
+    "results": {
+        "newest_listing": {
+            "baseline": {
+                "sql": "SELECT * FROM designs IGNORE INDEX (idx_designs_category_status_created, idx_designs_title, idx_designs_created_id) ORDER BY created_at DESC, id DESC LIMIT 24 OFFSET 0",
+                "bindings": [],
+                "result_sha256": "db909505906e6da313884f0f39027cde426274c2f2b659e8093d5d8a1a5253a5",
+                "rows_returned": 24,
+                "matching_count": null,
+                "explain": [
+                    {
+                        "id": 1,
+                        "select_type": "SIMPLE",
+                        "table": "designs",
+                        "partitions": null,
+                        "type": "ALL",
+                        "possible_keys": null,
+                        "key": null,
+                        "key_len": null,
+                        "ref": null,
+                        "rows": 99456,
+                        "filtered": 100,
+                        "Extra": "Using filesort"
+                    }
+                ],
+                "explain_analyze": [
+                    {
+                        "EXPLAIN": "-> Limit: 24 row(s)  (cost=10130 rows=24) (actual time=96..96 rows=24 loops=1)\n    -> Sort: designs.created_at DESC, designs.id DESC, limit input to 24 row(s) per chunk  (cost=10130 rows=99456) (actual time=96..96 rows=24 loops=1)\n        -> Table scan on designs  (cost=10130 rows=99456) (actual time=0.0362..62.2 rows=100000 loops=1)\n"
+                    }
+                ],
+                "samples_ms": [
+                    60.1791,
+                    59.0081,
+                    59.4553,
+                    59.3724,
+                    59.7294,
+                    138.0519,
+                    64.2177,
+                    60.6997,
+                    69.4427,
+                    70.6741,
+                    77.7793,
+                    83.5805,
+                    89.1085,
+                    78.5938,
+                    63.5578,
+                    62.7232,
+                    73.0773,
+                    95.8663,
+                    71.4912,
+                    71.4569
+                ],
+                "stats": {
+                    "min_ms": 59.0081,
+                    "median_ms": 70.0584,
+                    "p95_ms": 95.8663,
+                    "max_ms": 138.0519
+                }
+            },
+            "indexed": {
+                "sql": "SELECT * FROM designs ORDER BY created_at DESC, id DESC LIMIT 24 OFFSET 0",
+                "bindings": [],
+                "result_sha256": "db909505906e6da313884f0f39027cde426274c2f2b659e8093d5d8a1a5253a5",
+                "rows_returned": 24,
+                "matching_count": null,
+                "explain": [
+                    {
+                        "id": 1,
+                        "select_type": "SIMPLE",
+                        "table": "designs",
+                        "partitions": null,
+                        "type": "index",
+                        "possible_keys": null,
+                        "key": "idx_designs_created_id",
+                        "key_len": "13",
+                        "ref": null,
+                        "rows": 24,
+                        "filtered": 100,
+                        "Extra": "Backward index scan"
+                    }
+                ],
+                "explain_analyze": [
+                    {
+                        "EXPLAIN": "-> Limit: 24 row(s)  (cost=0.045 rows=24) (actual time=0.0408..0.126 rows=24 loops=1)\n    -> Index scan on designs using idx_designs_created_id (reverse)  (cost=0.045 rows=24) (actual time=0.04..0.123 rows=24 loops=1)\n"
+                    }
+                ],
+                "samples_ms": [
+                    0.7537,
+                    0.6367,
+                    0.7418,
+                    0.6258,
+                    0.7685,
+                    0.7198,
+                    1.2139,
+                    0.7212,
+                    0.841,
+                    0.5539,
+                    0.8594,
+                    0.7322,
+                    0.6447,
+                    0.4673,
+                    0.5047,
+                    0.4198,
+                    1.197,
+                    1.143,
+                    0.6863,
+                    0.8126
+                ],
+                "stats": {
+                    "min_ms": 0.4198,
+                    "median_ms": 0.7266999999999999,
+                    "p95_ms": 1.197,
+                    "max_ms": 1.2139
+                }
+            },
+            "median_speedup": 96.40621989816982
+        },
+        "newest_count": {
+            "baseline": {
+                "sql": "SELECT COUNT(*) AS aggregate FROM designs IGNORE INDEX (idx_designs_category_status_created, idx_designs_title, idx_designs_created_id)",
+                "bindings": [],
+                "result_sha256": "28753d5a29f52cb825eebbfd65355c40d67b4efbf7dbbf3aadda09d606283d96",
+                "rows_returned": 1,
+                "matching_count": 100000,
+                "explain": [
+                    {
+                        "id": 1,
+                        "select_type": "SIMPLE",
+                        "table": "designs",
+                        "partitions": null,
+                        "type": "index",
+                        "possible_keys": null,
+                        "key": "PRIMARY",
+                        "key_len": "8",
+                        "ref": null,
+                        "rows": 99456,
+                        "filtered": 100,
+                        "Extra": "Using index"
+                    }
+                ],
+                "explain_analyze": [
+                    {
+                        "EXPLAIN": "-> Count rows in designs  (actual time=6.22..6.22 rows=1 loops=1)\n"
+                    }
+                ],
+                "samples_ms": [
+                    6.8714,
+                    10.2906,
+                    8.5548,
+                    12.0279,
+                    11.8026,
+                    10.7705,
+                    12.5665,
+                    9.989,
+                    8.0497,
+                    9.6138,
+                    8.1109,
+                    11.3983,
+                    10.7263,
+                    8.9238,
+                    11.646,
+                    9.8446,
+                    11.2795,
+                    12.0803,
+                    12.3366,
+                    12.1039
+                ],
+                "stats": {
+                    "min_ms": 6.8714,
+                    "median_ms": 10.7484,
+                    "p95_ms": 12.3366,
+                    "max_ms": 12.5665
+                }
+            },
+            "indexed": {
+                "sql": "SELECT COUNT(*) AS aggregate FROM designs",
+                "bindings": [],
+                "result_sha256": "28753d5a29f52cb825eebbfd65355c40d67b4efbf7dbbf3aadda09d606283d96",
+                "rows_returned": 1,
+                "matching_count": 100000,
+                "explain": [
+                    {
+                        "id": 1,
+                        "select_type": "SIMPLE",
+                        "table": "designs",
+                        "partitions": null,
+                        "type": "index",
+                        "possible_keys": null,
+                        "key": "idx_designs_created_id",
+                        "key_len": "13",
+                        "ref": null,
+                        "rows": 99456,
+                        "filtered": 100,
+                        "Extra": "Using index"
+                    }
+                ],
+                "explain_analyze": [
+                    {
+                        "EXPLAIN": "-> Count rows in designs  (actual time=17.4..17.4 rows=1 loops=1)\n"
+                    }
+                ],
+                "samples_ms": [
+                    17.5395,
+                    17.0916,
+                    17.6743,
+                    29.8446,
+                    20.4331,
+                    18.5973,
+                    23.3254,
+                    17.0483,
+                    17.21,
+                    16.8519,
+                    17.1312,
+                    16.8602,
+                    26.1125,
+                    17.1444,
+                    17.204,
+                    17.1683,
+                    17.2717,
+                    16.9505,
+                    17.3502,
+                    17.2477
+                ],
+                "stats": {
+                    "min_ms": 16.8519,
+                    "median_ms": 17.22885,
+                    "p95_ms": 26.1125,
+                    "max_ms": 29.8446
+                }
+            },
+            "median_speedup": 0.6238605594685658
+        },
+        "category_status_listing": {
+            "baseline": {
+                "sql": "SELECT * FROM designs IGNORE INDEX (idx_designs_category_status_created, idx_designs_title, idx_designs_created_id) WHERE category_id = ? AND status = ? ORDER BY created_at DESC, id DESC LIMIT 24 OFFSET 0",
+                "bindings": [
+                    3,
+                    "published"
+                ],
+                "result_sha256": "24e50216d9e651ad884c9b76d6f36ad18acdeac40af29b53b6f775f6e468fb3b",
+                "rows_returned": 24,
+                "matching_count": null,
+                "explain": [
+                    {
+                        "id": 1,
+                        "select_type": "SIMPLE",
+                        "table": "designs",
+                        "partitions": null,
+                        "type": "ALL",
+                        "possible_keys": null,
+                        "key": null,
+                        "key_len": null,
+                        "ref": null,
+                        "rows": 99456,
+                        "filtered": 1.1111111640930176,
+                        "Extra": "Using where; Using filesort"
+                    }
+                ],
+                "explain_analyze": [
+                    {
+                        "EXPLAIN": "-> Limit: 24 row(s)  (cost=9135 rows=24) (actual time=75.7..75.7 rows=24 loops=1)\n    -> Sort: designs.created_at DESC, designs.id DESC, limit input to 24 row(s) per chunk  (cost=9135 rows=99456) (actual time=75.7..75.7 rows=24 loops=1)\n        -> Filter: ((designs.category_id = 3) and (designs.`status` = 'published'))  (cost=9135 rows=99456) (actual time=0.122..74.4 rows=3333 loops=1)\n            -> Table scan on designs  (cost=9135 rows=99456) (actual time=0.101..65.9 rows=100000 loops=1)\n"
+                    }
+                ],
+                "samples_ms": [
+                    63.2171,
+                    59.376,
+                    48.551,
+                    53.0527,
+                    48.5054,
+                    48.464,
+                    56.273,
+                    79.0983,
+                    73.6851,
+                    50.1786,
+                    54.4343,
+                    50.3375,
+                    48.6487,
+                    86.8529,
+                    52.285,
+                    51.1985,
+                    63.7306,
+                    54.7248,
+                    56.4369,
+                    51.1883
+                ],
+                "stats": {
+                    "min_ms": 48.464,
+                    "median_ms": 53.7435,
+                    "p95_ms": 79.0983,
+                    "max_ms": 86.8529
+                }
+            },
+            "indexed": {
+                "sql": "SELECT * FROM designs WHERE category_id = ? AND status = ? ORDER BY created_at DESC, id DESC LIMIT 24 OFFSET 0",
+                "bindings": [
+                    3,
+                    "published"
+                ],
+                "result_sha256": "24e50216d9e651ad884c9b76d6f36ad18acdeac40af29b53b6f775f6e468fb3b",
+                "rows_returned": 24,
+                "matching_count": null,
+                "explain": [
+                    {
+                        "id": 1,
+                        "select_type": "SIMPLE",
+                        "table": "designs",
+                        "partitions": null,
+                        "type": "ref",
+                        "possible_keys": "idx_designs_category_status_created",
+                        "key": "idx_designs_category_status_created",
+                        "key_len": "90",
+                        "ref": "const,const",
+                        "rows": 6302,
+                        "filtered": 100,
+                        "Extra": "Backward index scan"
+                    }
+                ],
+                "explain_analyze": [
+                    {
+                        "EXPLAIN": "-> Limit: 24 row(s)  (cost=1183 rows=24) (actual time=0.176..0.185 rows=24 loops=1)\n    -> Index lookup on designs using idx_designs_category_status_created (category_id=3, status='published') (reverse)  (cost=1183 rows=6302) (actual time=0.176..0.183 rows=24 loops=1)\n"
+                    }
+                ],
+                "samples_ms": [
+                    1.1045,
+                    0.9443,
+                    1.1574,
+                    0.9414,
+                    1.1333,
+                    0.9787,
+                    0.8139,
+                    0.636,
+                    0.892,
+                    0.6325,
+                    0.8799,
+                    0.6409,
+                    1.1052,
+                    0.9471,
+                    0.8387,
+                    0.6461,
+                    0.8442,
+                    0.7075,
+                    0.79,
+                    0.6041
+                ],
+                "stats": {
+                    "min_ms": 0.6041,
+                    "median_ms": 0.86205,
+                    "p95_ms": 1.1333,
+                    "max_ms": 1.1574
+                }
+            },
+            "median_speedup": 62.34383156429441
+        },
+        "category_status_count": {
+            "baseline": {
+                "sql": "SELECT COUNT(*) AS aggregate FROM designs IGNORE INDEX (idx_designs_category_status_created, idx_designs_title, idx_designs_created_id) WHERE category_id = ? AND status = ?",
+                "bindings": [
+                    3,
+                    "published"
+                ],
+                "result_sha256": "ec288590f6180e35a82a1f229ca67084bdcac53919756184dbea7d0f62189724",
+                "rows_returned": 1,
+                "matching_count": 3333,
+                "explain": [
+                    {
+                        "id": 1,
+                        "select_type": "SIMPLE",
+                        "table": "designs",
+                        "partitions": null,
+                        "type": "ALL",
+                        "possible_keys": null,
+                        "key": null,
+                        "key_len": null,
+                        "ref": null,
+                        "rows": 99456,
+                        "filtered": 1.1111111640930176,
+                        "Extra": "Using where"
+                    }
+                ],
+                "explain_analyze": [
+                    {
+                        "EXPLAIN": "-> Aggregate: count(0)  (cost=9246 rows=1) (actual time=50..50 rows=1 loops=1)\n    -> Filter: ((designs.category_id = 3) and (designs.`status` = 'published'))  (cost=9135 rows=1105) (actual time=0.0459..49.8 rows=3333 loops=1)\n        -> Table scan on designs  (cost=9135 rows=99456) (actual time=0.0393..41 rows=100000 loops=1)\n"
+                    }
+                ],
+                "samples_ms": [
+                    28.6787,
+                    42.4374,
+                    28.0126,
+                    28.3017,
+                    27.8789,
+                    27.66,
+                    28.1973,
+                    27.7097,
+                    28.0446,
+                    27.8995,
+                    30.0688,
+                    27.6424,
+                    36.0586,
+                    30.4458,
+                    28.293,
+                    29.0768,
+                    31.33,
+                    33.4657,
+                    29.3837,
+                    35.7233
+                ],
+                "stats": {
+                    "min_ms": 27.6424,
+                    "median_ms": 28.4902,
+                    "p95_ms": 36.0586,
+                    "max_ms": 42.4374
+                }
+            },
+            "indexed": {
+                "sql": "SELECT COUNT(*) AS aggregate FROM designs WHERE category_id = ? AND status = ?",
+                "bindings": [
+                    3,
+                    "published"
+                ],
+                "result_sha256": "ec288590f6180e35a82a1f229ca67084bdcac53919756184dbea7d0f62189724",
+                "rows_returned": 1,
+                "matching_count": 3333,
+                "explain": [
+                    {
+                        "id": 1,
+                        "select_type": "SIMPLE",
+                        "table": "designs",
+                        "partitions": null,
+                        "type": "ref",
+                        "possible_keys": "idx_designs_category_status_created",
+                        "key": "idx_designs_category_status_created",
+                        "key_len": "90",
+                        "ref": "const,const",
+                        "rows": 6302,
+                        "filtered": 100,
+                        "Extra": "Using index"
+                    }
+                ],
+                "explain_analyze": [
+                    {
+                        "EXPLAIN": "-> Aggregate: count(0)  (cost=1282 rows=1) (actual time=1.44..1.44 rows=1 loops=1)\n    -> Covering index lookup on designs using idx_designs_category_status_created (category_id=3, status='published')  (cost=652 rows=6302) (actual time=0.05..1.32 rows=3333 loops=1)\n"
+                    }
+                ],
+                "samples_ms": [
+                    1.7519,
+                    1.5798,
+                    5.9069,
+                    4.5435,
+                    1.9214,
+                    2.1302,
+                    1.9618,
+                    1.6261,
+                    2.0319,
+                    1.8245,
+                    1.8582,
+                    1.614,
+                    1.7549,
+                    1.6638,
+                    1.9868,
+                    1.8361,
+                    1.9921,
+                    4.1654,
+                    1.8188,
+                    1.686
+                ],
+                "stats": {
+                    "min_ms": 1.5798,
+                    "median_ms": 1.84715,
+                    "p95_ms": 4.5435,
+                    "max_ms": 5.9069
+                }
+            },
+            "median_speedup": 15.423869203908724
+        },
+        "category_only_listing": {
+            "baseline": {
+                "sql": "SELECT * FROM designs IGNORE INDEX (idx_designs_category_status_created, idx_designs_title, idx_designs_created_id) WHERE category_id = ? ORDER BY created_at DESC, id DESC LIMIT 24 OFFSET 0",
+                "bindings": [
+                    3
+                ],
+                "result_sha256": "12997bcb9dc7ceaa5382b2737581ae730f338bca8a7ea45be8a7866e1387be5e",
+                "rows_returned": 24,
+                "matching_count": null,
+                "explain": [
+                    {
+                        "id": 1,
+                        "select_type": "SIMPLE",
+                        "table": "designs",
+                        "partitions": null,
+                        "type": "ALL",
+                        "possible_keys": null,
+                        "key": null,
+                        "key_len": null,
+                        "ref": null,
+                        "rows": 99456,
+                        "filtered": 11.111111640930176,
+                        "Extra": "Using where; Using filesort"
+                    }
+                ],
+                "explain_analyze": [
+                    {
+                        "EXPLAIN": "-> Limit: 24 row(s)  (cost=10130 rows=24) (actual time=56.6..56.6 rows=24 loops=1)\n    -> Sort: designs.created_at DESC, designs.id DESC, limit input to 24 row(s) per chunk  (cost=10130 rows=99456) (actual time=56.6..56.6 rows=24 loops=1)\n        -> Filter: (designs.category_id = 3)  (cost=10130 rows=99456) (actual time=0.0391..54.1 rows=10000 loops=1)\n            -> Table scan on designs  (cost=10130 rows=99456) (actual time=0.037..47.5 rows=100000 loops=1)\n"
+                    }
+                ],
+                "samples_ms": [
+                    49.5862,
+                    57.2029,
+                    45.1694,
+                    46.6699,
+                    63.1664,
+                    46.6648,
+                    45.5322,
+                    69.898,
+                    51.5971,
+                    47.7606,
+                    48.3129,
+                    60.083,
+                    45.6136,
+                    63.058,
+                    73.7671,
+                    69.7171,
+                    47.7602,
+                    80.7071,
+                    75.0127,
+                    58.8944
+                ],
+                "stats": {
+                    "min_ms": 45.1694,
+                    "median_ms": 54.4,
+                    "p95_ms": 75.0127,
+                    "max_ms": 80.7071
+                }
+            },
+            "indexed": {
+                "sql": "SELECT * FROM designs WHERE category_id = ? ORDER BY created_at DESC, id DESC LIMIT 24 OFFSET 0",
+                "bindings": [
+                    3
+                ],
+                "result_sha256": "12997bcb9dc7ceaa5382b2737581ae730f338bca8a7ea45be8a7866e1387be5e",
+                "rows_returned": 24,
+                "matching_count": null,
+                "explain": [
+                    {
+                        "id": 1,
+                        "select_type": "SIMPLE",
+                        "table": "designs",
+                        "partitions": null,
+                        "type": "index",
+                        "possible_keys": "idx_designs_category_status_created",
+                        "key": "idx_designs_created_id",
+                        "key_len": "13",
+                        "ref": null,
+                        "rows": 133,
+                        "filtered": 18.007963180541992,
+                        "Extra": "Using where; Backward index scan"
+                    }
+                ],
+                "explain_analyze": [
+                    {
+                        "EXPLAIN": "-> Limit: 24 row(s)  (cost=0.742 rows=24) (actual time=0.0414..0.49 rows=24 loops=1)\n    -> Filter: (designs.category_id = 3)  (cost=0.742 rows=24) (actual time=0.041..0.488 rows=24 loops=1)\n        -> Index scan on designs using idx_designs_created_id (reverse)  (cost=0.742 rows=133) (actual time=0.0386..0.477 rows=238 loops=1)\n"
+                    }
+                ],
+                "samples_ms": [
+                    2.5348,
+                    2.2895,
+                    1.2034,
+                    2.7089,
+                    1.3511,
+                    1.2247,
+                    2.6322,
+                    1.2314,
+                    1.1704,
+                    1.2038,
+                    2.391,
+                    2.5363,
+                    1.2156,
+                    1.0315,
+                    1.5133,
+                    2.5966,
+                    1.1216,
+                    1.1094,
+                    1.4945,
+                    1.1352
+                ],
+                "stats": {
+                    "min_ms": 1.0315,
+                    "median_ms": 1.29125,
+                    "p95_ms": 2.6322,
+                    "max_ms": 2.7089
+                }
+            },
+            "median_speedup": 42.1297192642788
+        },
+        "category_only_count": {
+            "baseline": {
+                "sql": "SELECT COUNT(*) AS aggregate FROM designs IGNORE INDEX (idx_designs_category_status_created, idx_designs_title, idx_designs_created_id) WHERE category_id = ?",
+                "bindings": [
+                    3
+                ],
+                "result_sha256": "264c5b085f9d6c6a686284bb054b9d981f8e721523493825891b2856d4bd850c",
+                "rows_returned": 1,
+                "matching_count": 10000,
+                "explain": [
+                    {
+                        "id": 1,
+                        "select_type": "SIMPLE",
+                        "table": "designs",
+                        "partitions": null,
+                        "type": "ALL",
+                        "possible_keys": null,
+                        "key": null,
+                        "key_len": null,
+                        "ref": null,
+                        "rows": 99456,
+                        "filtered": 11.111111640930176,
+                        "Extra": "Using where"
+                    }
+                ],
+                "explain_analyze": [
+                    {
+                        "EXPLAIN": "-> Aggregate: count(0)  (cost=11235 rows=1) (actual time=25.9..25.9 rows=1 loops=1)\n    -> Filter: (designs.category_id = 3)  (cost=10130 rows=11051) (actual time=1.01..25.6 rows=10000 loops=1)\n        -> Table scan on designs  (cost=10130 rows=99456) (actual time=1.01..21.5 rows=100000 loops=1)\n"
+                    }
+                ],
+                "samples_ms": [
+                    22.2936,
+                    22.9041,
+                    22.1872,
+                    46.6628,
+                    39.5857,
+                    24.2079,
+                    35.1329,
+                    27.3905,
+                    25.5267,
+                    21.9675,
+                    22.4549,
+                    22.1167,
+                    26.5731,
+                    25.4616,
+                    22.3958,
+                    23.1351,
+                    22.297,
+                    22.7884,
+                    22.3825,
+                    44.3506
+                ],
+                "stats": {
+                    "min_ms": 21.9675,
+                    "median_ms": 23.0196,
+                    "p95_ms": 44.3506,
+                    "max_ms": 46.6628
+                }
+            },
+            "indexed": {
+                "sql": "SELECT COUNT(*) AS aggregate FROM designs WHERE category_id = ?",
+                "bindings": [
+                    3
+                ],
+                "result_sha256": "264c5b085f9d6c6a686284bb054b9d981f8e721523493825891b2856d4bd850c",
+                "rows_returned": 1,
+                "matching_count": 10000,
+                "explain": [
+                    {
+                        "id": 1,
+                        "select_type": "SIMPLE",
+                        "table": "designs",
+                        "partitions": null,
+                        "type": "ref",
+                        "possible_keys": "idx_designs_category_status_created",
+                        "key": "idx_designs_category_status_created",
+                        "key_len": "8",
+                        "ref": "const",
+                        "rows": 17910,
+                        "filtered": 100,
+                        "Extra": "Using index"
+                    }
+                ],
+                "explain_analyze": [
+                    {
+                        "EXPLAIN": "-> Aggregate: count(0)  (cost=3643 rows=1) (actual time=2.97..2.97 rows=1 loops=1)\n    -> Covering index lookup on designs using idx_designs_category_status_created (category_id=3)  (cost=1852 rows=17910) (actual time=0.289..2.51 rows=10000 loops=1)\n"
+                    }
+                ],
+                "samples_ms": [
+                    2.7531,
+                    2.5745,
+                    7.3606,
+                    7.2358,
+                    2.9481,
+                    2.6958,
+                    2.7613,
+                    2.551,
+                    2.9352,
+                    2.7803,
+                    2.7917,
+                    2.5991,
+                    7.2953,
+                    2.6475,
+                    3.1235,
+                    2.8784,
+                    2.8127,
+                    2.6507,
+                    2.8736,
+                    2.5618
+                ],
+                "stats": {
+                    "min_ms": 2.551,
+                    "median_ms": 2.786,
+                    "p95_ms": 7.2953,
+                    "max_ms": 7.3606
+                }
+            },
+            "median_speedup": 8.26259870782484
+        },
+        "status_only_listing": {
+            "baseline": {
+                "sql": "SELECT * FROM designs IGNORE INDEX (idx_designs_category_status_created, idx_designs_title, idx_designs_created_id) WHERE status = ? ORDER BY created_at DESC, id DESC LIMIT 24 OFFSET 0",
+                "bindings": [
+                    "published"
+                ],
+                "result_sha256": "33006ed617353b0d63dc1a19cbaf7d969bde6c74f3751b40c9f392f6721cf863",
+                "rows_returned": 24,
+                "matching_count": null,
+                "explain": [
+                    {
+                        "id": 1,
+                        "select_type": "SIMPLE",
+                        "table": "designs",
+                        "partitions": null,
+                        "type": "ALL",
+                        "possible_keys": null,
+                        "key": null,
+                        "key_len": null,
+                        "ref": null,
+                        "rows": 99456,
+                        "filtered": 10.000000953674316,
+                        "Extra": "Using where; Using filesort"
+                    }
+                ],
+                "explain_analyze": [
+                    {
+                        "EXPLAIN": "-> Limit: 24 row(s)  (cost=1179 rows=24) (actual time=105..105 rows=24 loops=1)\n    -> Sort: designs.created_at DESC, designs.id DESC, limit input to 24 row(s) per chunk  (cost=1179 rows=99456) (actual time=105..105 rows=24 loops=1)\n        -> Filter: (designs.`status` = 'published')  (cost=1179 rows=99456) (actual time=0.105..88 rows=49999 loops=1)\n            -> Table scan on designs  (cost=1179 rows=99456) (actual time=0.0966..71.1 rows=100000 loops=1)\n"
+                    }
+                ],
+                "samples_ms": [
+                    98.0992,
+                    75.7239,
+                    89.2152,
+                    111.4186,
+                    62.2427,
+                    81.4873,
+                    86.6686,
+                    84.223,
+                    62.0041,
+                    61.6211,
+                    86.2912,
+                    67.715,
+                    95.6556,
+                    62.1367,
+                    99.3398,
+                    61.4714,
+                    61.6415,
+                    80.6113,
+                    66.7361,
+                    65.7311
+                ],
+                "stats": {
+                    "min_ms": 61.4714,
+                    "median_ms": 78.1676,
+                    "p95_ms": 99.3398,
+                    "max_ms": 111.4186
+                }
+            },
+            "indexed": {
+                "sql": "SELECT * FROM designs WHERE status = ? ORDER BY created_at DESC, id DESC LIMIT 24 OFFSET 0",
+                "bindings": [
+                    "published"
+                ],
+                "result_sha256": "33006ed617353b0d63dc1a19cbaf7d969bde6c74f3751b40c9f392f6721cf863",
+                "rows_returned": 24,
+                "matching_count": null,
+                "explain": [
+                    {
+                        "id": 1,
+                        "select_type": "SIMPLE",
+                        "table": "designs",
+                        "partitions": null,
+                        "type": "index",
+                        "possible_keys": null,
+                        "key": "idx_designs_created_id",
+                        "key_len": "13",
+                        "ref": null,
+                        "rows": 24,
+                        "filtered": 10,
+                        "Extra": "Using where; Backward index scan"
+                    }
+                ],
+                "explain_analyze": [
+                    {
+                        "EXPLAIN": "-> Limit: 24 row(s)  (cost=0.0445 rows=2.4) (actual time=0.0249..0.128 rows=24 loops=1)\n    -> Filter: (designs.`status` = 'published')  (cost=0.0445 rows=2.4) (actual time=0.0244..0.126 rows=24 loops=1)\n        -> Index scan on designs using idx_designs_created_id (reverse)  (cost=0.0445 rows=24) (actual time=0.0229..0.119 rows=48 loops=1)\n"
+                    }
+                ],
+                "samples_ms": [
+                    1.3275,
+                    1.1283,
+                    1.4079,
+                    1.2338,
+                    1.5229,
+                    1.4326,
+                    1.2987,
+                    1.2318,
+                    0.9552,
+                    0.7639,
+                    0.9429,
+                    0.6609,
+                    0.6864,
+                    0.5002,
+                    0.7328,
+                    0.5377,
+                    0.6649,
+                    0.776,
+                    1.5151,
+                    1.3776
+                ],
+                "stats": {
+                    "min_ms": 0.5002,
+                    "median_ms": 1.04175,
+                    "p95_ms": 1.5151,
+                    "max_ms": 1.5229
+                }
+            },
+            "median_speedup": 75.03489320854331
+        },
+        "status_only_count": {
+            "baseline": {
+                "sql": "SELECT COUNT(*) AS aggregate FROM designs IGNORE INDEX (idx_designs_category_status_created, idx_designs_title, idx_designs_created_id) WHERE status = ?",
+                "bindings": [
+                    "published"
+                ],
+                "result_sha256": "621cd4b058e610e5e07b1561ba823c92d2619a1c85b954fe21a3e722b78561ce",
+                "rows_returned": 1,
+                "matching_count": 49999,
+                "explain": [
+                    {
+                        "id": 1,
+                        "select_type": "SIMPLE",
+                        "table": "designs",
+                        "partitions": null,
+                        "type": "ALL",
+                        "possible_keys": null,
+                        "key": null,
+                        "key_len": null,
+                        "ref": null,
+                        "rows": 99456,
+                        "filtered": 10.000000953674316,
+                        "Extra": "Using where"
+                    }
+                ],
+                "explain_analyze": [
+                    {
+                        "EXPLAIN": "-> Aggregate: count(0)  (cost=2173 rows=1) (actual time=56.4..56.4 rows=1 loops=1)\n    -> Filter: (designs.`status` = 'published')  (cost=1179 rows=9946) (actual time=0.0524..53.8 rows=49999 loops=1)\n        -> Table scan on designs  (cost=1179 rows=99456) (actual time=0.0483..38.3 rows=100000 loops=1)\n"
+                    }
+                ],
+                "samples_ms": [
+                    31.4972,
+                    43.5318,
+                    32.1111,
+                    51.6388,
+                    33.5399,
+                    31.6729,
+                    31.4208,
+                    43.3961,
+                    32.0263,
+                    31.42,
+                    31.5502,
+                    29.8655,
+                    29.594,
+                    31.4394,
+                    50.5393,
+                    30.7532,
+                    30.9235,
+                    30.3237,
+                    30.0461,
+                    30.7643
+                ],
+                "stats": {
+                    "min_ms": 29.594,
+                    "median_ms": 31.4683,
+                    "p95_ms": 50.5393,
+                    "max_ms": 51.6388
+                }
+            },
+            "indexed": {
+                "sql": "SELECT COUNT(*) AS aggregate FROM designs WHERE status = ?",
+                "bindings": [
+                    "published"
+                ],
+                "result_sha256": "621cd4b058e610e5e07b1561ba823c92d2619a1c85b954fe21a3e722b78561ce",
+                "rows_returned": 1,
+                "matching_count": 49999,
+                "explain": [
+                    {
+                        "id": 1,
+                        "select_type": "SIMPLE",
+                        "table": "designs",
+                        "partitions": null,
+                        "type": "index",
+                        "possible_keys": "idx_designs_category_status_created",
+                        "key": "idx_designs_category_status_created",
+                        "key_len": "103",
+                        "ref": null,
+                        "rows": 99456,
+                        "filtered": 10.000000953674316,
+                        "Extra": "Using where; Using index"
+                    }
+                ],
+                "explain_analyze": [
+                    {
+                        "EXPLAIN": "-> Aggregate: count(0)  (cost=2173 rows=1) (actual time=47..47 rows=1 loops=1)\n    -> Filter: (designs.`status` = 'published')  (cost=1179 rows=9946) (actual time=1.87..44 rows=49999 loops=1)\n        -> Covering index scan on designs using idx_designs_category_status_created  (cost=1179 rows=99456) (actual time=0.0345..29.8 rows=100000 loops=1)\n"
+                    }
+                ],
+                "samples_ms": [
+                    27.8677,
+                    27.6284,
+                    27.6423,
+                    52.2044,
+                    31.2275,
+                    27.8236,
+                    27.4035,
+                    27.4739,
+                    27.7446,
+                    27.4815,
+                    27.5168,
+                    26.2477,
+                    47.704,
+                    63.481,
+                    26.3778,
+                    26.2175,
+                    26.8142,
+                    27.6713,
+                    26.0515,
+                    26.0677
+                ],
+                "stats": {
+                    "min_ms": 26.0515,
+                    "median_ms": 27.5726,
+                    "p95_ms": 52.2044,
+                    "max_ms": 63.481
+                }
+            },
+            "median_speedup": 1.141288815708348
+        },
+        "english_prefix_listing": {
+            "baseline": {
+                "sql": "SELECT * FROM designs IGNORE INDEX (idx_designs_category_status_created, idx_designs_title, idx_designs_created_id) WHERE title LIKE ? ESCAPE '!' ORDER BY created_at DESC, id DESC LIMIT 24 OFFSET 0",
+                "bindings": [
+                    "Modern%"
+                ],
+                "result_sha256": "9247ad10886e99c4f41c25dd75b818b61f3118d3f477c164d7bab9a9ee808051",
+                "rows_returned": 24,
+                "matching_count": null,
+                "explain": [
+                    {
+                        "id": 1,
+                        "select_type": "SIMPLE",
+                        "table": "designs",
+                        "partitions": null,
+                        "type": "ALL",
+                        "possible_keys": null,
+                        "key": null,
+                        "key_len": null,
+                        "ref": null,
+                        "rows": 99456,
+                        "filtered": 11.109999656677246,
+                        "Extra": "Using where; Using filesort"
+                    }
+                ],
+                "explain_analyze": [
+                    {
+                        "EXPLAIN": "-> Limit: 24 row(s)  (cost=1289 rows=24) (actual time=64.5..64.5 rows=24 loops=1)\n    -> Sort: designs.created_at DESC, designs.id DESC, limit input to 24 row(s) per chunk  (cost=1289 rows=99456) (actual time=64.5..64.5 rows=24 loops=1)\n        -> Filter: (designs.title like 'Modern%' escape '!')  (cost=1289 rows=99456) (actual time=0.061..61.2 rows=12500 loops=1)\n            -> Table scan on designs  (cost=1289 rows=99456) (actual time=0.0592..52.7 rows=100000 loops=1)\n"
+                    }
+                ],
+                "samples_ms": [
+                    70.2733,
+                    65.3389,
+                    74.0012,
+                    55.8751,
+                    58.852,
+                    50.7634,
+                    48.7891,
+                    52.9295,
+                    82.5146,
+                    55.1058,
+                    71.2639,
+                    69.3642,
+                    94.8811,
+                    66.4642,
+                    63.6864,
+                    78.4097,
+                    51.6066,
+                    51.8259,
+                    51.1345,
+                    79.4903
+                ],
+                "stats": {
+                    "min_ms": 48.7891,
+                    "median_ms": 64.51265,
+                    "p95_ms": 82.5146,
+                    "max_ms": 94.8811
+                }
+            },
+            "indexed": {
+                "sql": "SELECT * FROM designs WHERE title LIKE ? ESCAPE '!' ORDER BY created_at DESC, id DESC LIMIT 24 OFFSET 0",
+                "bindings": [
+                    "Modern%"
+                ],
+                "result_sha256": "9247ad10886e99c4f41c25dd75b818b61f3118d3f477c164d7bab9a9ee808051",
+                "rows_returned": 24,
+                "matching_count": null,
+                "explain": [
+                    {
+                        "id": 1,
+                        "select_type": "SIMPLE",
+                        "table": "designs",
+                        "partitions": null,
+                        "type": "index",
+                        "possible_keys": "idx_designs_title",
+                        "key": "idx_designs_created_id",
+                        "key_len": "13",
+                        "ref": null,
+                        "rows": 113,
+                        "filtered": 21.058557510375977,
+                        "Extra": "Using where; Backward index scan"
+                    }
+                ],
+                "explain_analyze": [
+                    {
+                        "EXPLAIN": "-> Limit: 24 row(s)  (cost=8.33 rows=23.8) (actual time=0.0407..0.413 rows=24 loops=1)\n    -> Filter: (designs.title like 'Modern%' escape '!')  (cost=8.33 rows=23.8) (actual time=0.0404..0.412 rows=24 loops=1)\n        -> Index scan on designs using idx_designs_created_id (reverse)  (cost=8.33 rows=113) (actual time=0.0371..0.397 rows=189 loops=1)\n"
+                    }
+                ],
+                "samples_ms": [
+                    1.784,
+                    1.2551,
+                    2.1827,
+                    1.0579,
+                    0.9621,
+                    1.2373,
+                    0.953,
+                    0.8046,
+                    2.3932,
+                    2.2677,
+                    1.2745,
+                    0.9556,
+                    2.6634,
+                    2.3816,
+                    2.4802,
+                    2.2698,
+                    1.1541,
+                    0.8452,
+                    1.2993,
+                    1.1517
+                ],
+                "stats": {
+                    "min_ms": 0.8046,
+                    "median_ms": 1.2648000000000001,
+                    "p95_ms": 2.4802,
+                    "max_ms": 2.6634
+                }
+            },
+            "median_speedup": 51.006206514864
+        },
+        "english_prefix_count": {
+            "baseline": {
+                "sql": "SELECT COUNT(*) AS aggregate FROM designs IGNORE INDEX (idx_designs_category_status_created, idx_designs_title, idx_designs_created_id) WHERE title LIKE ? ESCAPE '!'",
+                "bindings": [
+                    "Modern%"
+                ],
+                "result_sha256": "d7942945b6090fa6c9e7013c4548f35e9633bbf8c50c8946ca84fffec93b7d6e",
+                "rows_returned": 1,
+                "matching_count": 12500,
+                "explain": [
+                    {
+                        "id": 1,
+                        "select_type": "SIMPLE",
+                        "table": "designs",
+                        "partitions": null,
+                        "type": "ALL",
+                        "possible_keys": null,
+                        "key": null,
+                        "key_len": null,
+                        "ref": null,
+                        "rows": 99456,
+                        "filtered": 11.109999656677246,
+                        "Extra": "Using where"
+                    }
+                ],
+                "explain_analyze": [
+                    {
+                        "EXPLAIN": "-> Aggregate: count(0)  (cost=2394 rows=1) (actual time=44.8..44.8 rows=1 loops=1)\n    -> Filter: (designs.title like 'Modern%' escape '!')  (cost=1289 rows=11050) (actual time=0.0765..44.2 rows=12500 loops=1)\n        -> Table scan on designs  (cost=1289 rows=99456) (actual time=0.0741..34.5 rows=100000 loops=1)\n"
+                    }
+                ],
+                "samples_ms": [
+                    28.146,
+                    38.0822,
+                    41.9378,
+                    32.3993,
+                    42.7765,
+                    32.0182,
+                    29.4896,
+                    41.4502,
+                    43.0032,
+                    27.8428,
+                    31.5247,
+                    27.7307,
+                    27.6248,
+                    27.4951,
+                    27.8764,
+                    42.8785,
+                    36.1019,
+                    40.6579,
+                    35.6256,
+                    33.8549
+                ],
+                "stats": {
+                    "min_ms": 27.4951,
+                    "median_ms": 33.1271,
+                    "p95_ms": 42.8785,
+                    "max_ms": 43.0032
+                }
+            },
+            "indexed": {
+                "sql": "SELECT COUNT(*) AS aggregate FROM designs WHERE title LIKE ? ESCAPE '!'",
+                "bindings": [
+                    "Modern%"
+                ],
+                "result_sha256": "d7942945b6090fa6c9e7013c4548f35e9633bbf8c50c8946ca84fffec93b7d6e",
+                "rows_returned": 1,
+                "matching_count": 12500,
+                "explain": [
+                    {
+                        "id": 1,
+                        "select_type": "SIMPLE",
+                        "table": "designs",
+                        "partitions": null,
+                        "type": "range",
+                        "possible_keys": "idx_designs_title",
+                        "key": "idx_designs_title",
+                        "key_len": "1022",
+                        "ref": null,
+                        "rows": 20944,
+                        "filtered": 100,
+                        "Extra": "Using where; Using index"
+                    }
+                ],
+                "explain_analyze": [
+                    {
+                        "EXPLAIN": "-> Aggregate: count(0)  (cost=6938 rows=1) (actual time=7.86..7.86 rows=1 loops=1)\n    -> Filter: (designs.title like 'Modern%' escape '!')  (cost=4844 rows=20944) (actual time=0.0611..7.14 rows=12500 loops=1)\n        -> Covering index range scan on designs using idx_designs_title over ('Modern\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t' <= title <= 'Modern￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿')  (cost=4844 rows=20944) (actual time=0.0594..5.4 rows=12500 loops=1)\n"
+                    }
+                ],
+                "samples_ms": [
+                    15.4242,
+                    15.2068,
+                    5.2856,
+                    5.8966,
+                    5.3396,
+                    5.1722,
+                    5.6653,
+                    9.5014,
+                    5.4752,
+                    5.332,
+                    5.2174,
+                    5.104,
+                    5.4275,
+                    5.3458,
+                    6.7093,
+                    15.3506,
+                    6.8886,
+                    7.2424,
+                    7.1754,
+                    13.0501
+                ],
+                "stats": {
+                    "min_ms": 5.104,
+                    "median_ms": 5.780950000000001,
+                    "p95_ms": 15.3506,
+                    "max_ms": 15.4242
+                }
+            },
+            "median_speedup": 5.73039033376867
+        },
+        "arabic_prefix_listing": {
+            "baseline": {
+                "sql": "SELECT * FROM designs IGNORE INDEX (idx_designs_category_status_created, idx_designs_title, idx_designs_created_id) WHERE title LIKE ? ESCAPE '!' ORDER BY created_at DESC, id DESC LIMIT 24 OFFSET 0",
+                "bindings": [
+                    "تصميم%"
+                ],
+                "result_sha256": "a6b8266460914064f9da260081064e0755b9d5a54428ce86d686a1331da69963",
+                "rows_returned": 24,
+                "matching_count": null,
+                "explain": [
+                    {
+                        "id": 1,
+                        "select_type": "SIMPLE",
+                        "table": "designs",
+                        "partitions": null,
+                        "type": "ALL",
+                        "possible_keys": null,
+                        "key": null,
+                        "key_len": null,
+                        "ref": null,
+                        "rows": 99456,
+                        "filtered": 11.109999656677246,
+                        "Extra": "Using where; Using filesort"
+                    }
+                ],
+                "explain_analyze": [
+                    {
+                        "EXPLAIN": "-> Limit: 24 row(s)  (cost=1289 rows=24) (actual time=76..76 rows=24 loops=1)\n    -> Sort: designs.created_at DESC, designs.id DESC, limit input to 24 row(s) per chunk  (cost=1289 rows=99456) (actual time=76..76 rows=24 loops=1)\n        -> Filter: (designs.title like 'تصميم%' escape '!')  (cost=1289 rows=99456) (actual time=0.0872..68.7 rows=25000 loops=1)\n            -> Table scan on designs  (cost=1289 rows=99456) (actual time=0.08..58 rows=100000 loops=1)\n"
+                    }
+                ],
+                "samples_ms": [
+                    63.9851,
+                    58.2365,
+                    54.6065,
+                    54.5155,
+                    56.5653,
+                    56.317,
+                    110.1521,
+                    63.0913,
+                    65.7474,
+                    54.587,
+                    54.5753,
+                    54.8493,
+                    54.4492,
+                    54.5142,
+                    54.8016,
+                    54.5674,
+                    58.4007,
+                    76.0635,
+                    54.5748,
+                    53.8258
+                ],
+                "stats": {
+                    "min_ms": 53.8258,
+                    "median_ms": 54.825450000000004,
+                    "p95_ms": 76.0635,
+                    "max_ms": 110.1521
+                }
+            },
+            "indexed": {
+                "sql": "SELECT * FROM designs WHERE title LIKE ? ESCAPE '!' ORDER BY created_at DESC, id DESC LIMIT 24 OFFSET 0",
+                "bindings": [
+                    "تصميم%"
+                ],
+                "result_sha256": "a6b8266460914064f9da260081064e0755b9d5a54428ce86d686a1331da69963",
+                "rows_returned": 24,
+                "matching_count": null,
+                "explain": [
+                    {
+                        "id": 1,
+                        "select_type": "SIMPLE",
+                        "table": "designs",
+                        "partitions": null,
+                        "type": "index",
+                        "possible_keys": "idx_designs_title",
+                        "key": "idx_designs_created_id",
+                        "key_len": "13",
+                        "ref": null,
+                        "rows": 58,
+                        "filtered": 41.14985656738281,
+                        "Extra": "Using where; Backward index scan"
+                    }
+                ],
+                "explain_analyze": [
+                    {
+                        "EXPLAIN": "-> Limit: 24 row(s)  (cost=3.52 rows=23.9) (actual time=0.035..0.257 rows=24 loops=1)\n    -> Filter: (designs.title like 'تصميم%' escape '!')  (cost=3.52 rows=23.9) (actual time=0.0344..0.255 rows=24 loops=1)\n        -> Index scan on designs using idx_designs_created_id (reverse)  (cost=3.52 rows=58) (actual time=0.0316..0.244 rows=95 loops=1)\n"
+                    }
+                ],
+                "samples_ms": [
+                    0.8737,
+                    0.6672,
+                    0.797,
+                    0.8278,
+                    1.0479,
+                    0.8886,
+                    2.0302,
+                    1.8646,
+                    1.1581,
+                    0.9943,
+                    1.103,
+                    0.9501,
+                    1.0806,
+                    0.9527,
+                    1.7848,
+                    0.9575,
+                    1.4761,
+                    0.7353,
+                    0.8292,
+                    0.5956
+                ],
+                "stats": {
+                    "min_ms": 0.5956,
+                    "median_ms": 0.9551000000000001,
+                    "p95_ms": 1.8646,
+                    "max_ms": 2.0302
+                }
+            },
+            "median_speedup": 57.40283739922521
+        },
+        "arabic_prefix_count": {
+            "baseline": {
+                "sql": "SELECT COUNT(*) AS aggregate FROM designs IGNORE INDEX (idx_designs_category_status_created, idx_designs_title, idx_designs_created_id) WHERE title LIKE ? ESCAPE '!'",
+                "bindings": [
+                    "تصميم%"
+                ],
+                "result_sha256": "7a94a1c1797c8cf300707c20feffa7292c6efd7a845b17961ca46ace321bdac6",
+                "rows_returned": 1,
+                "matching_count": 25000,
+                "explain": [
+                    {
+                        "id": 1,
+                        "select_type": "SIMPLE",
+                        "table": "designs",
+                        "partitions": null,
+                        "type": "ALL",
+                        "possible_keys": null,
+                        "key": null,
+                        "key_len": null,
+                        "ref": null,
+                        "rows": 99456,
+                        "filtered": 11.109999656677246,
+                        "Extra": "Using where"
+                    }
+                ],
+                "explain_analyze": [
+                    {
+                        "EXPLAIN": "-> Aggregate: count(0)  (cost=2394 rows=1) (actual time=32.5..32.5 rows=1 loops=1)\n    -> Filter: (designs.title like 'تصميم%' escape '!')  (cost=1289 rows=11050) (actual time=0.041..31.7 rows=25000 loops=1)\n        -> Table scan on designs  (cost=1289 rows=99456) (actual time=0.0379..24.3 rows=100000 loops=1)\n"
+                    }
+                ],
+                "samples_ms": [
+                    38.0634,
+                    55.3976,
+                    38.8749,
+                    26.8846,
+                    26.8867,
+                    26.9115,
+                    26.9428,
+                    27.114,
+                    26.9538,
+                    27.0768,
+                    27.1279,
+                    40.319,
+                    27.2351,
+                    30.1042,
+                    29.4461,
+                    30.3028,
+                    26.9952,
+                    29.8352,
+                    28.5336,
+                    27.4484
+                ],
+                "stats": {
+                    "min_ms": 26.8846,
+                    "median_ms": 27.341749999999998,
+                    "p95_ms": 40.319,
+                    "max_ms": 55.3976
+                }
+            },
+            "indexed": {
+                "sql": "SELECT COUNT(*) AS aggregate FROM designs WHERE title LIKE ? ESCAPE '!'",
+                "bindings": [
+                    "تصميم%"
+                ],
+                "result_sha256": "7a94a1c1797c8cf300707c20feffa7292c6efd7a845b17961ca46ace321bdac6",
+                "rows_returned": 1,
+                "matching_count": 25000,
+                "explain": [
+                    {
+                        "id": 1,
+                        "select_type": "SIMPLE",
+                        "table": "designs",
+                        "partitions": null,
+                        "type": "range",
+                        "possible_keys": "idx_designs_title",
+                        "key": "idx_designs_title",
+                        "key_len": "1022",
+                        "ref": null,
+                        "rows": 40926,
+                        "filtered": 100,
+                        "Extra": "Using where; Using index"
+                    }
+                ],
+                "explain_analyze": [
+                    {
+                        "EXPLAIN": "-> Aggregate: count(0)  (cost=13557 rows=1) (actual time=29.2..29.2 rows=1 loops=1)\n    -> Filter: (designs.title like 'تصميم%' escape '!')  (cost=9464 rows=40926) (actual time=0.115..26.9 rows=25000 loops=1)\n        -> Covering index range scan on designs using idx_designs_title over ('تصميم\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t' <= title <= 'تصميم￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿')  (cost=9464 rows=40926) (actual time=0.112..20.8 rows=25000 loops=1)\n"
+                    }
+                ],
+                "samples_ms": [
+                    27.0197,
+                    31.0063,
+                    11.0409,
+                    10.8218,
+                    11.1566,
+                    11.1383,
+                    11.106,
+                    22.0882,
+                    11.1626,
+                    10.974,
+                    11.0731,
+                    11.0155,
+                    11.237,
+                    11.184,
+                    11.8949,
+                    10.8885,
+                    10.9634,
+                    11.3291,
+                    27.8467,
+                    11.2288
+                ],
+                "stats": {
+                    "min_ms": 10.8218,
+                    "median_ms": 11.1596,
+                    "p95_ms": 27.8467,
+                    "max_ms": 31.0063
+                }
+            },
+            "median_speedup": 2.450065414530987
+        },
+        "combined_listing": {
+            "baseline": {
+                "sql": "SELECT * FROM designs IGNORE INDEX (idx_designs_category_status_created, idx_designs_title, idx_designs_created_id) WHERE title LIKE ? ESCAPE '!' AND category_id = ? AND status = ? ORDER BY created_at DESC, id DESC LIMIT 24 OFFSET 0",
+                "bindings": [
+                    "Modern%",
+                    3,
+                    "published"
+                ],
+                "result_sha256": "6a6d74ea86a323e82dabd3f7676601cf35d14b818a81a7097c605dc834be23df",
+                "rows_returned": 24,
+                "matching_count": null,
+                "explain": [
+                    {
+                        "id": 1,
+                        "select_type": "SIMPLE",
+                        "table": "designs",
+                        "partitions": null,
+                        "type": "ALL",
+                        "possible_keys": null,
+                        "key": null,
+                        "key_len": null,
+                        "ref": null,
+                        "rows": 99456,
+                        "filtered": 0.12344444543123245,
+                        "Extra": "Using where; Using filesort"
+                    }
+                ],
+                "explain_analyze": [
+                    {
+                        "EXPLAIN": "-> Limit: 24 row(s)  (cost=9037 rows=24) (actual time=50.4..50.4 rows=24 loops=1)\n    -> Sort: designs.created_at DESC, designs.id DESC, limit input to 24 row(s) per chunk  (cost=9037 rows=99456) (actual time=50.4..50.4 rows=24 loops=1)\n        -> Filter: ((designs.category_id = 3) and (designs.title like 'Modern%' escape '!') and (designs.`status` = 'published'))  (cost=9037 rows=99456) (actual time=0.0874..50.1 rows=833 loops=1)\n            -> Table scan on designs  (cost=9037 rows=99456) (actual time=0.0412..44 rows=100000 loops=1)\n"
+                    }
+                ],
+                "samples_ms": [
+                    50.5392,
+                    49.1875,
+                    50.7456,
+                    50.2553,
+                    46.5906,
+                    48.4464,
+                    72.3829,
+                    81.8979,
+                    69.8566,
+                    52.5805,
+                    71.4924,
+                    47.5659,
+                    68.6439,
+                    47.8564,
+                    47.5388,
+                    47.489,
+                    63.503,
+                    47.5202,
+                    47.6279,
+                    47.4952
+                ],
+                "stats": {
+                    "min_ms": 46.5906,
+                    "median_ms": 49.7214,
+                    "p95_ms": 72.3829,
+                    "max_ms": 81.8979
+                }
+            },
+            "indexed": {
+                "sql": "SELECT * FROM designs WHERE title LIKE ? ESCAPE '!' AND category_id = ? AND status = ? ORDER BY created_at DESC, id DESC LIMIT 24 OFFSET 0",
+                "bindings": [
+                    "Modern%",
+                    3,
+                    "published"
+                ],
+                "result_sha256": "6a6d74ea86a323e82dabd3f7676601cf35d14b818a81a7097c605dc834be23df",
+                "rows_returned": 24,
+                "matching_count": null,
+                "explain": [
+                    {
+                        "id": 1,
+                        "select_type": "SIMPLE",
+                        "table": "designs",
+                        "partitions": null,
+                        "type": "ref",
+                        "possible_keys": "idx_designs_category_status_created,idx_designs_title",
+                        "key": "idx_designs_category_status_created",
+                        "key_len": "90",
+                        "ref": "const,const",
+                        "rows": 6302,
+                        "filtered": 21.058557510375977,
+                        "Extra": "Using where; Backward index scan"
+                    }
+                ],
+                "explain_analyze": [
+                    {
+                        "EXPLAIN": "-> Limit: 24 row(s)  (cost=685 rows=24) (actual time=0.142..0.287 rows=24 loops=1)\n    -> Filter: (designs.title like 'Modern%' escape '!')  (cost=685 rows=1327) (actual time=0.141..0.286 rows=24 loops=1)\n        -> Index lookup on designs using idx_designs_category_status_created (category_id=3, status='published') (reverse)  (cost=685 rows=6302) (actual time=0.139..0.278 rows=94 loops=1)\n"
+                    }
+                ],
+                "samples_ms": [
+                    1.0054,
+                    0.7988,
+                    0.9628,
+                    0.8389,
+                    0.981,
+                    0.8125,
+                    2.4186,
+                    2.0014,
+                    2.3412,
+                    2.1313,
+                    1.3305,
+                    1.4783,
+                    1.4319,
+                    1.2126,
+                    1.0763,
+                    0.9776,
+                    1.3455,
+                    1.1484,
+                    1.3132,
+                    1.1262
+                ],
+                "stats": {
+                    "min_ms": 0.7988,
+                    "median_ms": 1.1804999999999999,
+                    "p95_ms": 2.3412,
+                    "max_ms": 2.4186
+                }
+            },
+            "median_speedup": 42.11893265565439
+        },
+        "combined_count": {
+            "baseline": {
+                "sql": "SELECT COUNT(*) AS aggregate FROM designs IGNORE INDEX (idx_designs_category_status_created, idx_designs_title, idx_designs_created_id) WHERE title LIKE ? ESCAPE '!' AND category_id = ? AND status = ?",
+                "bindings": [
+                    "Modern%",
+                    3,
+                    "published"
+                ],
+                "result_sha256": "3e5479aa605f388516270d8bfddf799bb6d95f458f8959cb2db6f0f376205ad7",
+                "rows_returned": 1,
+                "matching_count": 833,
+                "explain": [
+                    {
+                        "id": 1,
+                        "select_type": "SIMPLE",
+                        "table": "designs",
+                        "partitions": null,
+                        "type": "ALL",
+                        "possible_keys": null,
+                        "key": null,
+                        "key_len": null,
+                        "ref": null,
+                        "rows": 99456,
+                        "filtered": 0.12344444543123245,
+                        "Extra": "Using where"
+                    }
+                ],
+                "explain_analyze": [
+                    {
+                        "EXPLAIN": "-> Aggregate: count(0)  (cost=9049 rows=1) (actual time=64.6..64.6 rows=1 loops=1)\n    -> Filter: ((designs.category_id = 3) and (designs.title like 'Modern%' escape '!') and (designs.`status` = 'published'))  (cost=9037 rows=123) (actual time=0.115..64.5 rows=833 loops=1)\n        -> Table scan on designs  (cost=9037 rows=99456) (actual time=0.0686..54.4 rows=100000 loops=1)\n"
+                    }
+                ],
+                "samples_ms": [
+                    47.0198,
+                    33.4853,
+                    43.5229,
+                    33.4126,
+                    33.9552,
+                    47.6557,
+                    33.6703,
+                    33.5627,
+                    33.7334,
+                    59.6457,
+                    80.5457,
+                    36.6042,
+                    33.8696,
+                    33.3903,
+                    33.8261,
+                    33.6367,
+                    33.8302,
+                    33.3208,
+                    33.6744,
+                    33.8613
+                ],
+                "stats": {
+                    "min_ms": 33.3208,
+                    "median_ms": 33.828149999999994,
+                    "p95_ms": 59.6457,
+                    "max_ms": 80.5457
+                }
+            },
+            "indexed": {
+                "sql": "SELECT COUNT(*) AS aggregate FROM designs WHERE title LIKE ? ESCAPE '!' AND category_id = ? AND status = ?",
+                "bindings": [
+                    "Modern%",
+                    3,
+                    "published"
+                ],
+                "result_sha256": "3e5479aa605f388516270d8bfddf799bb6d95f458f8959cb2db6f0f376205ad7",
+                "rows_returned": 1,
+                "matching_count": 833,
+                "explain": [
+                    {
+                        "id": 1,
+                        "select_type": "SIMPLE",
+                        "table": "designs",
+                        "partitions": null,
+                        "type": "ref",
+                        "possible_keys": "idx_designs_category_status_created,idx_designs_title",
+                        "key": "idx_designs_category_status_created",
+                        "key_len": "90",
+                        "ref": "const,const",
+                        "rows": 6302,
+                        "filtered": 21.058557510375977,
+                        "Extra": "Using where"
+                    }
+                ],
+                "explain_analyze": [
+                    {
+                        "EXPLAIN": "-> Aggregate: count(0)  (cost=818 rows=1) (actual time=21.7..21.7 rows=1 loops=1)\n    -> Filter: (designs.title like 'Modern%' escape '!')  (cost=685 rows=1327) (actual time=0.754..21.6 rows=833 loops=1)\n        -> Index lookup on designs using idx_designs_category_status_created (category_id=3, status='published')  (cost=685 rows=6302) (actual time=0.748..20.8 rows=3333 loops=1)\n"
+                    }
+                ],
+                "samples_ms": [
+                    8.6608,
+                    8.0956,
+                    8.5717,
+                    9.0407,
+                    8.444,
+                    8.2412,
+                    8.2391,
+                    8.1861,
+                    8.5477,
+                    8.1142,
+                    21.1468,
+                    9.4845,
+                    8.7562,
+                    8.1427,
+                    8.5024,
+                    7.9176,
+                    8.4305,
+                    7.9213,
+                    8.7912,
+                    8.845
+                ],
+                "stats": {
+                    "min_ms": 7.9176,
+                    "median_ms": 8.4732,
+                    "p95_ms": 9.4845,
+                    "max_ms": 21.1468
+                }
+            },
+            "median_speedup": 3.992370060897889
+        },
+        "rare_prefix_listing": {
+            "baseline": {
+                "sql": "SELECT * FROM designs IGNORE INDEX (idx_designs_category_status_created, idx_designs_title, idx_designs_created_id) WHERE title LIKE ? ESCAPE '!' ORDER BY created_at DESC, id DESC LIMIT 24 OFFSET 0",
+                "bindings": [
+                    "Modern Business Card 9999%"
+                ],
+                "result_sha256": "df17b4118d6197c631855bd1c3140324a4795905e757858931e4f465b148c223",
+                "rows_returned": 1,
+                "matching_count": null,
+                "explain": [
+                    {
+                        "id": 1,
+                        "select_type": "SIMPLE",
+                        "table": "designs",
+                        "partitions": null,
+                        "type": "ALL",
+                        "possible_keys": null,
+                        "key": null,
+                        "key_len": null,
+                        "ref": null,
+                        "rows": 99456,
+                        "filtered": 11.109999656677246,
+                        "Extra": "Using where; Using filesort"
+                    }
+                ],
+                "explain_analyze": [
+                    {
+                        "EXPLAIN": "-> Limit: 24 row(s)  (cost=1289 rows=24) (actual time=120..120 rows=1 loops=1)\n    -> Sort: designs.created_at DESC, designs.id DESC, limit input to 24 row(s) per chunk  (cost=1289 rows=99456) (actual time=120..120 rows=1 loops=1)\n        -> Filter: (designs.title like 'Modern Business Card 9999%' escape '!')  (cost=1289 rows=99456) (actual time=120..120 rows=1 loops=1)\n            -> Table scan on designs  (cost=1289 rows=99456) (actual time=0.0389..101 rows=100000 loops=1)\n"
+                    }
+                ],
+                "samples_ms": [
+                    73.0645,
+                    49.7304,
+                    49.9052,
+                    64.1538,
+                    49.8665,
+                    49.5791,
+                    77.2482,
+                    65.2723,
+                    56.4931,
+                    49.6485,
+                    81.987,
+                    57.3955,
+                    93.2893,
+                    75.2818,
+                    53.9054,
+                    54.0316,
+                    77.7988,
+                    49.7523,
+                    49.7287,
+                    49.8417
+                ],
+                "stats": {
+                    "min_ms": 49.5791,
+                    "median_ms": 55.26235,
+                    "p95_ms": 81.987,
+                    "max_ms": 93.2893
+                }
+            },
+            "indexed": {
+                "sql": "SELECT * FROM designs WHERE title LIKE ? ESCAPE '!' ORDER BY created_at DESC, id DESC LIMIT 24 OFFSET 0",
+                "bindings": [
+                    "Modern Business Card 9999%"
+                ],
+                "result_sha256": "df17b4118d6197c631855bd1c3140324a4795905e757858931e4f465b148c223",
+                "rows_returned": 1,
+                "matching_count": null,
+                "explain": [
+                    {
+                        "id": 1,
+                        "select_type": "SIMPLE",
+                        "table": "designs",
+                        "partitions": null,
+                        "type": "range",
+                        "possible_keys": "idx_designs_title",
+                        "key": "idx_designs_title",
+                        "key_len": "1022",
+                        "ref": null,
+                        "rows": 1,
+                        "filtered": 100,
+                        "Extra": "Using index condition; Using filesort"
+                    }
+                ],
+                "explain_analyze": [
+                    {
+                        "EXPLAIN": "-> Limit: 24 row(s)  (cost=0.71 rows=1) (actual time=0.0436..0.0438 rows=1 loops=1)\n    -> Sort: designs.created_at DESC, designs.id DESC, limit input to 24 row(s) per chunk  (cost=0.71 rows=1) (actual time=0.0431..0.0431 rows=1 loops=1)\n        -> Index range scan on designs using idx_designs_title over ('Modern Business Card 9999\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t' <= title <= 'Modern Business Card 9999￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿'), with index condition: (designs.title like 'Modern Business Card 9999%' escape '!')  (cost=0.71 rows=1) (actual time=0.0252..0.0298 rows=1 loops=1)\n"
+                    }
+                ],
+                "samples_ms": [
+                    0.7598,
+                    0.5969,
+                    0.7182,
+                    0.5722,
+                    0.5198,
+                    0.3845,
+                    1.0783,
+                    0.9031,
+                    0.72,
+                    0.5746,
+                    0.8225,
+                    1.0182,
+                    0.8119,
+                    0.6394,
+                    1.0505,
+                    0.9119,
+                    0.7463,
+                    0.5916,
+                    0.7068,
+                    0.5688
+                ],
+                "stats": {
+                    "min_ms": 0.3845,
+                    "median_ms": 0.7191,
+                    "p95_ms": 1.0505,
+                    "max_ms": 1.0783
+                }
+            },
+            "median_speedup": 76.84932554582117
+        },
+        "rare_prefix_count": {
+            "baseline": {
+                "sql": "SELECT COUNT(*) AS aggregate FROM designs IGNORE INDEX (idx_designs_category_status_created, idx_designs_title, idx_designs_created_id) WHERE title LIKE ? ESCAPE '!'",
+                "bindings": [
+                    "Modern Business Card 9999%"
+                ],
+                "result_sha256": "5b3d7b0813e3551c587e50c6fb6b83ae00c61c4e25f99d6e3d6057a17e7e3054",
+                "rows_returned": 1,
+                "matching_count": 1,
+                "explain": [
+                    {
+                        "id": 1,
+                        "select_type": "SIMPLE",
+                        "table": "designs",
+                        "partitions": null,
+                        "type": "ALL",
+                        "possible_keys": null,
+                        "key": null,
+                        "key_len": null,
+                        "ref": null,
+                        "rows": 99456,
+                        "filtered": 11.109999656677246,
+                        "Extra": "Using where"
+                    }
+                ],
+                "explain_analyze": [
+                    {
+                        "EXPLAIN": "-> Aggregate: count(0)  (cost=2394 rows=1) (actual time=31.8..31.8 rows=1 loops=1)\n    -> Filter: (designs.title like 'Modern Business Card 9999%' escape '!')  (cost=1289 rows=11050) (actual time=31.8..31.8 rows=1 loops=1)\n        -> Table scan on designs  (cost=1289 rows=99456) (actual time=0.0367..24.1 rows=100000 loops=1)\n"
+                    }
+                ],
+                "samples_ms": [
+                    52.5615,
+                    35.6613,
+                    28.8855,
+                    36.9813,
+                    28.9892,
+                    28.7398,
+                    29.2314,
+                    29.152,
+                    49.172,
+                    28.7108,
+                    28.7081,
+                    29.5602,
+                    28.9949,
+                    28.7055,
+                    28.8194,
+                    52.3628,
+                    43.6892,
+                    27.3328,
+                    27.3195,
+                    27.2983
+                ],
+                "stats": {
+                    "min_ms": 27.2983,
+                    "median_ms": 28.99205,
+                    "p95_ms": 52.3628,
+                    "max_ms": 52.5615
+                }
+            },
+            "indexed": {
+                "sql": "SELECT COUNT(*) AS aggregate FROM designs WHERE title LIKE ? ESCAPE '!'",
+                "bindings": [
+                    "Modern Business Card 9999%"
+                ],
+                "result_sha256": "5b3d7b0813e3551c587e50c6fb6b83ae00c61c4e25f99d6e3d6057a17e7e3054",
+                "rows_returned": 1,
+                "matching_count": 1,
+                "explain": [
+                    {
+                        "id": 1,
+                        "select_type": "SIMPLE",
+                        "table": "designs",
+                        "partitions": null,
+                        "type": "range",
+                        "possible_keys": "idx_designs_title",
+                        "key": "idx_designs_title",
+                        "key_len": "1022",
+                        "ref": null,
+                        "rows": 1,
+                        "filtered": 100,
+                        "Extra": "Using where; Using index"
+                    }
+                ],
+                "explain_analyze": [
+                    {
+                        "EXPLAIN": "-> Aggregate: count(0)  (cost=0.56 rows=1) (actual time=0.0185..0.0185 rows=1 loops=1)\n    -> Filter: (designs.title like 'Modern Business Card 9999%' escape '!')  (cost=0.46 rows=1) (actual time=0.0144..0.0172 rows=1 loops=1)\n        -> Covering index range scan on designs using idx_designs_title over ('Modern Business Card 9999\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t' <= title <= 'Modern Business Card 9999￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿')  (cost=0.46 rows=1) (actual time=0.0131..0.0157 rows=1 loops=1)\n"
+                    }
+                ],
+                "samples_ms": [
+                    1.0141,
+                    0.901,
+                    0.7519,
+                    0.5593,
+                    0.7139,
+                    0.5264,
+                    0.675,
+                    0.528,
+                    0.674,
+                    0.3668,
+                    0.6522,
+                    0.5299,
+                    0.665,
+                    0.5283,
+                    0.7088,
+                    0.5348,
+                    0.8916,
+                    0.6083,
+                    0.6151,
+                    0.9168
+                ],
+                "stats": {
+                    "min_ms": 0.3668,
+                    "median_ms": 0.6586000000000001,
+                    "p95_ms": 0.9168,
+                    "max_ms": 1.0141
+                }
+            },
+            "median_speedup": 44.02072578196173
+        },
+        "absent_prefix_listing": {
+            "baseline": {
+                "sql": "SELECT * FROM designs IGNORE INDEX (idx_designs_category_status_created, idx_designs_title, idx_designs_created_id) WHERE title LIKE ? ESCAPE '!' ORDER BY created_at DESC, id DESC LIMIT 24 OFFSET 0",
+                "bindings": [
+                    "NoSuchDesignPrefix%"
+                ],
+                "result_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+                "rows_returned": 0,
+                "matching_count": null,
+                "explain": [
+                    {
+                        "id": 1,
+                        "select_type": "SIMPLE",
+                        "table": "designs",
+                        "partitions": null,
+                        "type": "ALL",
+                        "possible_keys": null,
+                        "key": null,
+                        "key_len": null,
+                        "ref": null,
+                        "rows": 99456,
+                        "filtered": 11.109999656677246,
+                        "Extra": "Using where; Using filesort"
+                    }
+                ],
+                "explain_analyze": [
+                    {
+                        "EXPLAIN": "-> Limit: 24 row(s)  (cost=1289 rows=24) (actual time=72.2..72.2 rows=0 loops=1)\n    -> Sort: designs.created_at DESC, designs.id DESC, limit input to 24 row(s) per chunk  (cost=1289 rows=99456) (actual time=72.2..72.2 rows=0 loops=1)\n        -> Filter: (designs.title like 'NoSuchDesignPrefix%' escape '!')  (cost=1289 rows=99456) (actual time=72.2..72.2 rows=0 loops=1)\n            -> Table scan on designs  (cost=1289 rows=99456) (actual time=0.0962..62.8 rows=100000 loops=1)\n"
+                    }
+                ],
+                "samples_ms": [
+                    45.7122,
+                    45.4381,
+                    57.7161,
+                    45.2213,
+                    45.2755,
+                    45.3954,
+                    80.385,
+                    71.6563,
+                    45.8675,
+                    45.2916,
+                    45.2985,
+                    45.6451,
+                    46.5368,
+                    46.2357,
+                    62.6066,
+                    55.4067,
+                    49.7376,
+                    57.9194,
+                    45.4587,
+                    45.5088
+                ],
+                "stats": {
+                    "min_ms": 45.2213,
+                    "median_ms": 45.78985,
+                    "p95_ms": 71.6563,
+                    "max_ms": 80.385
+                }
+            },
+            "indexed": {
+                "sql": "SELECT * FROM designs WHERE title LIKE ? ESCAPE '!' ORDER BY created_at DESC, id DESC LIMIT 24 OFFSET 0",
+                "bindings": [
+                    "NoSuchDesignPrefix%"
+                ],
+                "result_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+                "rows_returned": 0,
+                "matching_count": null,
+                "explain": [
+                    {
+                        "id": 1,
+                        "select_type": "SIMPLE",
+                        "table": "designs",
+                        "partitions": null,
+                        "type": "range",
+                        "possible_keys": "idx_designs_title",
+                        "key": "idx_designs_title",
+                        "key_len": "1022",
+                        "ref": null,
+                        "rows": 1,
+                        "filtered": 100,
+                        "Extra": "Using index condition; Using filesort"
+                    }
+                ],
+                "explain_analyze": [
+                    {
+                        "EXPLAIN": "-> Limit: 24 row(s)  (cost=0.71 rows=1) (actual time=0.0376..0.0376 rows=0 loops=1)\n    -> Sort: designs.created_at DESC, designs.id DESC, limit input to 24 row(s) per chunk  (cost=0.71 rows=1) (actual time=0.0367..0.0367 rows=0 loops=1)\n        -> Index range scan on designs using idx_designs_title over ('NoSuchDesignPrefix\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t' <= title <= 'NoSuchDesignPrefix￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿'), with index condition: (designs.title like 'NoSuchDesignPrefix%' escape '!')  (cost=0.71 rows=1) (actual time=0.0294..0.0294 rows=0 loops=1)\n"
+                    }
+                ],
+                "samples_ms": [
+                    0.6986,
+                    0.5118,
+                    0.704,
+                    0.527,
+                    0.6226,
+                    0.5031,
+                    1.0477,
+                    0.8528,
+                    0.6408,
+                    0.5057,
+                    0.6372,
+                    0.5049,
+                    0.6457,
+                    0.5074,
+                    1.0176,
+                    0.7878,
+                    0.4429,
+                    0.3416,
+                    0.4723,
+                    0.3785
+                ],
+                "stats": {
+                    "min_ms": 0.3416,
+                    "median_ms": 0.5748,
+                    "p95_ms": 1.0176,
+                    "max_ms": 1.0477
+                }
+            },
+            "median_speedup": 79.66223034098817
+        },
+        "absent_prefix_count": {
+            "baseline": {
+                "sql": "SELECT COUNT(*) AS aggregate FROM designs IGNORE INDEX (idx_designs_category_status_created, idx_designs_title, idx_designs_created_id) WHERE title LIKE ? ESCAPE '!'",
+                "bindings": [
+                    "NoSuchDesignPrefix%"
+                ],
+                "result_sha256": "8f8a87d580cddd531cf4d5fdf6a47d376609a9848b1fabddb7bcb8aa86874ce7",
+                "rows_returned": 1,
+                "matching_count": 0,
+                "explain": [
+                    {
+                        "id": 1,
+                        "select_type": "SIMPLE",
+                        "table": "designs",
+                        "partitions": null,
+                        "type": "ALL",
+                        "possible_keys": null,
+                        "key": null,
+                        "key_len": null,
+                        "ref": null,
+                        "rows": 99456,
+                        "filtered": 11.109999656677246,
+                        "Extra": "Using where"
+                    }
+                ],
+                "explain_analyze": [
+                    {
+                        "EXPLAIN": "-> Aggregate: count(0)  (cost=2394 rows=1) (actual time=28.4..28.4 rows=1 loops=1)\n    -> Filter: (designs.title like 'NoSuchDesignPrefix%' escape '!')  (cost=1289 rows=11050) (actual time=28.4..28.4 rows=0 loops=1)\n        -> Table scan on designs  (cost=1289 rows=99456) (actual time=0.0336..22.8 rows=100000 loops=1)\n"
+                    }
+                ],
+                "samples_ms": [
+                    27.2372,
+                    26.0641,
+                    28.7504,
+                    25.3331,
+                    27.0362,
+                    25.4311,
+                    25.5353,
+                    25.2084,
+                    27.0883,
+                    25.6159,
+                    25.766,
+                    25.7574,
+                    25.6027,
+                    25.7484,
+                    25.6718,
+                    42.014,
+                    25.4659,
+                    35.6866,
+                    51.4518,
+                    25.2211
+                ],
+                "stats": {
+                    "min_ms": 25.2084,
+                    "median_ms": 25.7529,
+                    "p95_ms": 42.014,
+                    "max_ms": 51.4518
+                }
+            },
+            "indexed": {
+                "sql": "SELECT COUNT(*) AS aggregate FROM designs WHERE title LIKE ? ESCAPE '!'",
+                "bindings": [
+                    "NoSuchDesignPrefix%"
+                ],
+                "result_sha256": "8f8a87d580cddd531cf4d5fdf6a47d376609a9848b1fabddb7bcb8aa86874ce7",
+                "rows_returned": 1,
+                "matching_count": 0,
+                "explain": [
+                    {
+                        "id": 1,
+                        "select_type": "SIMPLE",
+                        "table": "designs",
+                        "partitions": null,
+                        "type": "range",
+                        "possible_keys": "idx_designs_title",
+                        "key": "idx_designs_title",
+                        "key_len": "1022",
+                        "ref": null,
+                        "rows": 1,
+                        "filtered": 100,
+                        "Extra": "Using where; Using index"
+                    }
+                ],
+                "explain_analyze": [
+                    {
+                        "EXPLAIN": "-> Aggregate: count(0)  (cost=0.56 rows=1) (actual time=0.0118..0.0119 rows=1 loops=1)\n    -> Filter: (designs.title like 'NoSuchDesignPrefix%' escape '!')  (cost=0.46 rows=1) (actual time=0.0111..0.0111 rows=0 loops=1)\n        -> Covering index range scan on designs using idx_designs_title over ('NoSuchDesignPrefix\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t' <= title <= 'NoSuchDesignPrefix￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿')  (cost=0.46 rows=1) (actual time=0.0105..0.0105 rows=0 loops=1)\n"
+                    }
+                ],
+                "samples_ms": [
+                    0.4434,
+                    0.3079,
+                    0.4315,
+                    0.3132,
+                    0.427,
+                    0.3573,
+                    0.4117,
+                    0.297,
+                    0.6315,
+                    0.4935,
+                    0.6158,
+                    0.4948,
+                    0.6029,
+                    0.4871,
+                    0.5458,
+                    0.4022,
+                    0.5641,
+                    0.5207,
+                    0.5139,
+                    0.3662
+                ],
+                "stats": {
+                    "min_ms": 0.297,
+                    "median_ms": 0.46525,
+                    "p95_ms": 0.6158,
+                    "max_ms": 0.6315
+                }
+            },
+            "median_speedup": 55.35282106394412
+        },
+        "deep_offset_listing": {
+            "baseline": {
+                "sql": "SELECT * FROM designs IGNORE INDEX (idx_designs_category_status_created, idx_designs_title, idx_designs_created_id) ORDER BY created_at DESC, id DESC LIMIT 24 OFFSET 96000",
+                "bindings": [],
+                "result_sha256": "16cd90bdbe30570aadef0813c65373c6ef58c1e9ccf5145824a641f91f88dd36",
+                "rows_returned": 24,
+                "matching_count": null,
+                "explain": [
+                    {
+                        "id": 1,
+                        "select_type": "SIMPLE",
+                        "table": "designs",
+                        "partitions": null,
+                        "type": "ALL",
+                        "possible_keys": null,
+                        "key": null,
+                        "key_len": null,
+                        "ref": null,
+                        "rows": 99456,
+                        "filtered": 100,
+                        "Extra": "Using filesort"
+                    }
+                ],
+                "explain_analyze": [
+                    {
+                        "EXPLAIN": "-> Limit\/Offset: 24\/96000 row(s)  (cost=10130 rows=24) (actual time=132..132 rows=24 loops=1)\n    -> Sort: designs.created_at DESC, designs.id DESC, limit input to 96024 row(s) per chunk  (cost=10130 rows=99456) (actual time=119..130 rows=96024 loops=1)\n        -> Table scan on designs  (cost=10130 rows=99456) (actual time=0.0967..60.5 rows=100000 loops=1)\n"
+                    }
+                ],
+                "samples_ms": [
+                    111.3766,
+                    106.2569,
+                    108.0036,
+                    109.8926,
+                    129.5829,
+                    135.4463,
+                    129.7522,
+                    218.4523,
+                    123.8882,
+                    114.9981,
+                    108.423,
+                    160.9811,
+                    120.3166,
+                    116.181,
+                    121.0188,
+                    129.3639,
+                    136.0192,
+                    108.2291,
+                    106.55,
+                    98.8702
+                ],
+                "stats": {
+                    "min_ms": 98.8702,
+                    "median_ms": 118.24879999999999,
+                    "p95_ms": 160.9811,
+                    "max_ms": 218.4523
+                }
+            },
+            "indexed": {
+                "sql": "SELECT * FROM designs ORDER BY created_at DESC, id DESC LIMIT 24 OFFSET 96000",
+                "bindings": [],
+                "result_sha256": "16cd90bdbe30570aadef0813c65373c6ef58c1e9ccf5145824a641f91f88dd36",
+                "rows_returned": 24,
+                "matching_count": null,
+                "explain": [
+                    {
+                        "id": 1,
+                        "select_type": "SIMPLE",
+                        "table": "designs",
+                        "partitions": null,
+                        "type": "ALL",
+                        "possible_keys": null,
+                        "key": null,
+                        "key_len": null,
+                        "ref": null,
+                        "rows": 99456,
+                        "filtered": 100,
+                        "Extra": "Using filesort"
+                    }
+                ],
+                "explain_analyze": [
+                    {
+                        "EXPLAIN": "-> Limit\/Offset: 24\/96000 row(s)  (cost=10130 rows=24) (actual time=163..163 rows=24 loops=1)\n    -> Sort: designs.created_at DESC, designs.id DESC, limit input to 96024 row(s) per chunk  (cost=10130 rows=99456) (actual time=148..161 rows=96024 loops=1)\n        -> Table scan on designs  (cost=10130 rows=99456) (actual time=0.0951..78.3 rows=100000 loops=1)\n"
+                    }
+                ],
+                "samples_ms": [
+                    108.4997,
+                    121.6058,
+                    100.7311,
+                    120.5197,
+                    113.6177,
+                    126.7068,
+                    170.305,
+                    152.0085,
+                    106.8363,
+                    104.5919,
+                    102.1298,
+                    105.917,
+                    97.8005,
+                    148.5354,
+                    157.5948,
+                    130.5687,
+                    120.5258,
+                    105.8682,
+                    107.3503,
+                    105.078
+                ],
+                "stats": {
+                    "min_ms": 97.8005,
+                    "median_ms": 111.0587,
+                    "p95_ms": 157.5948,
+                    "max_ms": 170.305
+                }
+            },
+            "median_speedup": 1.0647414385365577
+        }
+    },
+    "cache_counters_after": [
+        {
+            "Variable_name": "Innodb_buffer_pool_read_requests",
+            "Value": "7054735"
+        },
+        {
+            "Variable_name": "Innodb_buffer_pool_reads",
+            "Value": "1106"
+        }
+    ],
+    "dataset_after": {
+        "rows": 100000,
+        "sha256": "6c3d8092fd73dd39e7626106e4830cc16ac8ac460d1643ff23e9f0cb190c115b"
+    },
+    "dataset_unchanged": true,
+    "finished_at_utc": "2026-10-28T13:20:21+00:00"
+}

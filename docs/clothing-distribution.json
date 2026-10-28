@@ -1,0 +1,46 @@
+{
+    "seed": "dorra-clothing-20261028-",
+    "method": "CRC32(seed + id) modulo 10; deterministic pseudorandom assignment",
+    "distribution": [
+        {
+            "thumbnail": "clothing\/clothing-01.jpg",
+            "total": 10016
+        },
+        {
+            "thumbnail": "clothing\/clothing-02.jpg",
+            "total": 9955
+        },
+        {
+            "thumbnail": "clothing\/clothing-03.jpg",
+            "total": 10014
+        },
+        {
+            "thumbnail": "clothing\/clothing-04.jpg",
+            "total": 10056
+        },
+        {
+            "thumbnail": "clothing\/clothing-05.jpg",
+            "total": 9955
+        },
+        {
+            "thumbnail": "clothing\/clothing-06.jpg",
+            "total": 9817
+        },
+        {
+            "thumbnail": "clothing\/clothing-07.jpg",
+            "total": 9861
+        },
+        {
+            "thumbnail": "clothing\/clothing-08.jpg",
+            "total": 10139
+        },
+        {
+            "thumbnail": "clothing\/clothing-09.jpg",
+            "total": 10153
+        },
+        {
+            "thumbnail": "clothing\/clothing-10.jpg",
+            "total": 10034
+        }
+    ]
+}

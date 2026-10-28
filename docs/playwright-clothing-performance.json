@@ -1,0 +1,157 @@
+{
+  "browser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+  "warmups": 2,
+  "runs": 10,
+  "results": [
+    {
+      "url": "http://127.0.0.1:8000/dashboard",
+      "samples": [
+        {
+          "ttfb_ms": 329.5,
+          "response_ms": 335.5999999977648,
+          "dom_content_loaded_ms": 395,
+          "load_ms": 398.1000000014901,
+          "transfer_bytes": 89687
+        },
+        {
+          "ttfb_ms": 269.6000000014901,
+          "response_ms": 274.8999999985099,
+          "dom_content_loaded_ms": 343.6000000014901,
+          "load_ms": 346.19999999925494,
+          "transfer_bytes": 89687
+        },
+        {
+          "ttfb_ms": 387.69999999925494,
+          "response_ms": 394.69999999925494,
+          "dom_content_loaded_ms": 476.20000000298023,
+          "load_ms": 480,
+          "transfer_bytes": 89687
+        },
+        {
+          "ttfb_ms": 313.4000000022352,
+          "response_ms": 318.1000000014901,
+          "dom_content_loaded_ms": 622.5,
+          "load_ms": 625.8999999985099,
+          "transfer_bytes": 89687
+        },
+        {
+          "ttfb_ms": 324.20000000298023,
+          "response_ms": 329.70000000298023,
+          "dom_content_loaded_ms": 421.5999999977648,
+          "load_ms": 424.79999999701977,
+          "transfer_bytes": 89687
+        },
+        {
+          "ttfb_ms": 332.70000000298023,
+          "response_ms": 336.5,
+          "dom_content_loaded_ms": 405.4000000022352,
+          "load_ms": 408.9000000022352,
+          "transfer_bytes": 89687
+        },
+        {
+          "ttfb_ms": 284.19999999925494,
+          "response_ms": 290.80000000074506,
+          "dom_content_loaded_ms": 352,
+          "load_ms": 355.5999999977648,
+          "transfer_bytes": 89687
+        },
+        {
+          "ttfb_ms": 370.5999999977648,
+          "response_ms": 374.69999999925494,
+          "dom_content_loaded_ms": 435,
+          "load_ms": 439.5,
+          "transfer_bytes": 89687
+        },
+        {
+          "ttfb_ms": 275,
+          "response_ms": 279,
+          "dom_content_loaded_ms": 337.5,
+          "load_ms": 340.19999999925494,
+          "transfer_bytes": 89687
+        },
+        {
+          "ttfb_ms": 350.19999999925494,
+          "response_ms": 355.30000000074506,
+          "dom_content_loaded_ms": 412.6000000014901,
+          "load_ms": 414.80000000074506,
+          "transfer_bytes": 89687
+        }
+      ]
+    },
+    {
+      "url": "http://127.0.0.1:8000/dashboard?search=Modern&category_id=3&status=published&page=2",
+      "samples": [
+        {
+          "ttfb_ms": 369.5,
+          "response_ms": 375.20000000298023,
+          "dom_content_loaded_ms": 435.30000000074506,
+          "load_ms": 438.6000000014901,
+          "transfer_bytes": 90653
+        },
+        {
+          "ttfb_ms": 292.9000000022352,
+          "response_ms": 297,
+          "dom_content_loaded_ms": 363.80000000074506,
+          "load_ms": 366.80000000074506,
+          "transfer_bytes": 90653
+        },
+        {
+          "ttfb_ms": 327.1000000014901,
+          "response_ms": 331.30000000074506,
+          "dom_content_loaded_ms": 425.80000000074506,
+          "load_ms": 429.5,
+          "transfer_bytes": 90653
+        },
+        {
+          "ttfb_ms": 330.29999999701977,
+          "response_ms": 334.79999999701977,
+          "dom_content_loaded_ms": 391.8999999985099,
+          "load_ms": 394.80000000074506,
+          "transfer_bytes": 90653
+        },
+        {
+          "ttfb_ms": 375.20000000298023,
+          "response_ms": 380.20000000298023,
+          "dom_content_loaded_ms": 486.5,
+          "load_ms": 492.0999999977648,
+          "transfer_bytes": 90653
+        },
+        {
+          "ttfb_ms": 410,
+          "response_ms": 417.80000000074506,
+          "dom_content_loaded_ms": 512.4000000022352,
+          "load_ms": 516.1999999992549,
+          "transfer_bytes": 90653
+        },
+        {
+          "ttfb_ms": 283.8999999985099,
+          "response_ms": 288.30000000074506,
+          "dom_content_loaded_ms": 356.20000000298023,
+          "load_ms": 360.80000000074506,
+          "transfer_bytes": 90653
+        },
+        {
+          "ttfb_ms": 402.5,
+          "response_ms": 406.79999999701977,
+          "dom_content_loaded_ms": 493.6000000014901,
+          "load_ms": 497.6000000014901,
+          "transfer_bytes": 90653
+        },
+        {
+          "ttfb_ms": 403.19999999925494,
+          "response_ms": 407.30000000074506,
+          "dom_content_loaded_ms": 473.6000000014901,
+          "load_ms": 476.30000000074506,
+          "transfer_bytes": 90653
+        },
+        {
+          "ttfb_ms": 286,
+          "response_ms": 290.69999999925494,
+          "dom_content_loaded_ms": 367.80000000074506,
+          "load_ms": 372.5,
+          "transfer_bytes": 90653
+        }
+      ]
+    }
+  ]
+}

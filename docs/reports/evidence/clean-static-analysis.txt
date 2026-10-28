@@ -1,0 +1,4 @@
+﻿Note: Using configuration file D:\New folder\dorra-clean-install-20261028-163606\phpstan.neon.
+
+ [OK] No errors                                                                                                        
+

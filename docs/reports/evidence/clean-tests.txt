@@ -1,0 +1,91 @@
+﻿
+   PASS  Tests\Unit\ExampleTest
+  ✓ that true is true
+
+   PASS  Tests\Feature\Auth\AuthenticationTest
+  ✓ login screen can be rendered                                                                                 0.86s  
+  ✓ users can authenticate using the login screen                                                                0.09s  
+  ✓ users can not authenticate with invalid password                                                             0.24s  
+  ✓ remember me creates a token and restores login without the session                                           0.92s  
+  ✓ login without remember me does not create a remember token or cookie                                         0.04s  
+  ✓ users can logout                                                                                             0.03s  
+
+   PASS  Tests\Feature\Auth\EmailVerificationTest
+  ✓ email verification screen can be rendered                                                                    0.21s  
+  ✓ email can be verified                                                                                        0.04s  
+  ✓ email is not verified with invalid hash                                                                      0.14s  
+
+   PASS  Tests\Feature\Auth\PasswordConfirmationTest
+  ✓ confirm password screen can be rendered                                                                      0.27s  
+  ✓ password can be confirmed                                                                                    0.05s  
+  ✓ password is not confirmed with invalid password                                                              0.25s  
+
+   PASS  Tests\Feature\Auth\PasswordResetTest
+  ✓ reset password link screen can be rendered                                                                   0.31s  
+  ✓ reset password link can be requested                                                                         0.26s  
+  ✓ reset password screen can be rendered                                                                        0.60s  
+  ✓ password can be reset with valid token                                                                       0.25s  
+
+   PASS  Tests\Feature\Auth\RegistrationTest
+  ✓ registration screen can be rendered                                                                          0.43s  
+  ✓ new users can register                                                                                       0.05s  
+
+   PASS  Tests\Feature\CsrfProtectionTest
+  ✓ all mutating web endpoints reject missing and invalid tokens                                                 0.16s  
+  ✓ valid token allows authorized user creation                                                                  0.04s  
+
+   PASS  Tests\Feature\DashboardTest
+  ✓ guests are redirected to the login page                                                                      0.03s  
+  ✓ authenticated users can visit the dashboard                                                                  0.03s  
+
+   PASS  Tests\Feature\DesignDatabaseTest
+  ✓ defaults and relationships                                                                                   0.02s  
+  ✓ category with designs cannot be deleted                                                                      0.02s  
+  ✓ design cannot reference missing category                                                                     0.02s  
+  ✓ category slug is unique                                                                                      0.02s  
+  ✓ sample seeders are repeatable and preserve existing users                                                    0.03s  
+  ✓ design seed is small in tests and can resume                                                                 0.03s  
+  ✓ user seeder creates both roles with hashed passwords                                                         0.02s  
+
+   PASS  Tests\Feature\DesignLibraryTest
+  ✓ admin can list filter and view drafts                                                                        0.23s  
+  ✓ shared clothing image is displayed and never deleted with a design                                           0.05s  
+  ✓ table hides sample suffix but preserves real title numbers                                                   0.04s  
+  ✓ guests cannot access library or management                                                                   0.03s  
+  ✓ viewer only sees published and cannot manage designs                                                         0.05s  
+  ✓ pagination uses 24 and stable order and preserves filters                                                    0.07s  
+  ✓ search and combined filters and literal wildcards                                                            0.06s  
+  ✓ admin can create edit replace and delete uploaded images                                                     0.29s  
+  ✓ placeholder is preserved and invalid input is not saved                                                      0.07s  
+  ✓ failed database save cleans up new upload                                                                    0.04s  
+  ✓ invalid update and oversized image leave design unchanged                                                    0.03s  
+
+   PASS  Tests\Feature\ExampleTest
+  ✓ returns a successful response                                                                                0.09s  
+
+   PASS  Tests\Feature\Settings\AppearanceUpdateTest
+  ✓ appearance settings screen can be rendered                                                                   0.25s  
+  ✓ users can update theme to light                                                                              0.04s  
+  ✓ users can update theme to dark                                                                               0.02s  
+  ✓ users can update theme to system                                                                             0.02s  
+  ✓ theme update requires valid value                                                                            0.03s  
+  ✓ guests cannot update theme preference                                                                        0.02s  
+
+   PASS  Tests\Feature\Settings\PasswordUpdateTest
+  ✓ password can be updated                                                                                      0.03s  
+  ✓ correct password must be provided to update password                                                         0.03s  
+
+   PASS  Tests\Feature\Settings\ProfileUpdateTest
+  ✓ profile page is displayed                                                                                    0.42s  
+  ✓ profile information can be updated                                                                           0.04s  
+  ✓ email verification status is unchanged when email address is unchanged                                       0.03s  
+  ✓ user can delete their account                                                                                0.03s  
+
+   PASS  Tests\Feature\UserManagementTest
+  ✓ guests and viewers cannot manage users or see the menu                                                       0.05s  
+  ✓ admin can create view update and delete user                                                                 0.56s  
+  ✓ validation and own administrator protection                                                                  0.04s  
+
+  Tests:    57 passed (286 assertions)
+  Duration: 8.46s
+

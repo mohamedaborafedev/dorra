@@ -1,0 +1,56 @@
+{
+    "server": {
+        "version": "8.4.3"
+    },
+    "note": "Actual controller SQL and EXPLAIN; not benchmark timings.",
+    "queries": [
+        {
+            "sql": "select count(*) as aggregate from `designs` where title LIKE ? ESCAPE '!' and `category_id` = ? and `status` = ?",
+            "bindings": [
+                "Modern%",
+                3,
+                "published"
+            ],
+            "explain": [
+                {
+                    "id": 1,
+                    "select_type": "SIMPLE",
+                    "table": "designs",
+                    "partitions": null,
+                    "type": "ref",
+                    "possible_keys": "idx_designs_category_status_created,idx_designs_title",
+                    "key": "idx_designs_category_status_created",
+                    "key_len": "90",
+                    "ref": "const,const",
+                    "rows": 6302,
+                    "filtered": 21.058557510375977,
+                    "Extra": "Using where"
+                }
+            ]
+        },
+        {
+            "sql": "select * from `designs` where title LIKE ? ESCAPE '!' and `category_id` = ? and `status` = ? order by `created_at` desc, `id` desc limit 24 offset 0",
+            "bindings": [
+                "Modern%",
+                3,
+                "published"
+            ],
+            "explain": [
+                {
+                    "id": 1,
+                    "select_type": "SIMPLE",
+                    "table": "designs",
+                    "partitions": null,
+                    "type": "ref",
+                    "possible_keys": "idx_designs_category_status_created,idx_designs_title",
+                    "key": "idx_designs_category_status_created",
+                    "key_len": "90",
+                    "ref": "const,const",
+                    "rows": 6302,
+                    "filtered": 21.058557510375977,
+                    "Extra": "Using where; Backward index scan"
+                }
+            ]
+        }
+    ]
+}

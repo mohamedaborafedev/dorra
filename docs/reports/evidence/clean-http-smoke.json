@@ -1,0 +1,26 @@
+{
+  "base": "http://127.0.0.1:8011",
+  "roles": [
+    {
+      "role": "admin",
+      "login_status": 200,
+      "rows": 24,
+      "status_filter": true,
+      "users_status": 200,
+      "draft_status": 200
+    },
+    {
+      "role": "viewer",
+      "login_status": 200,
+      "rows": 24,
+      "status_filter": false,
+      "users_status": 403,
+      "draft_status": 403
+    }
+  ],
+  "crud": {
+    "users": "create/read/update/delete passed",
+    "designs": "create with required image, read and serve image HTTP200, update retaining image, delete record and stored file passed"
+  },
+  "note": "Initial probe expected HTTP404 after deleted static file; Windows development server returned403 instead. Physical file absence was then verified; CRUD was rerun successfully."
+}

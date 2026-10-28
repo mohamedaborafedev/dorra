@@ -1,0 +1,9 @@
+﻿{
+    "cpu":  {
+                "Name":  "Intel(R) Xeon(R) CPU E5-1650 v4 @ 3.60GHz",
+                "NumberOfCores":  6,
+                "NumberOfLogicalProcessors":  12
+            },
+    "browser_benchmark_note":  "Local Chrome via Playwright MCP; PHP artisan development server; browser cache not disabled; not isolated from initial DB experiment.",
+    "ram_bytes":  34271756288
+}

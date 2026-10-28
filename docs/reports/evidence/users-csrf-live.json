@@ -1,0 +1,146 @@
+[
+  {
+    "role": "admin",
+    "users_menu": true,
+    "users_page": 200,
+    "csrf_checks": [
+      {
+        "method": "POST",
+        "path": "/users",
+        "token": "missing",
+        "status": 419
+      },
+      {
+        "method": "POST",
+        "path": "/users",
+        "token": "invalid",
+        "status": 419
+      },
+      {
+        "method": "PUT",
+        "path": "/users/3",
+        "token": "missing",
+        "status": 419
+      },
+      {
+        "method": "PUT",
+        "path": "/users/3",
+        "token": "invalid",
+        "status": 419
+      },
+      {
+        "method": "DELETE",
+        "path": "/users/3",
+        "token": "missing",
+        "status": 419
+      },
+      {
+        "method": "DELETE",
+        "path": "/users/3",
+        "token": "invalid",
+        "status": 419
+      },
+      {
+        "method": "POST",
+        "path": "/designs",
+        "token": "missing",
+        "status": 419
+      },
+      {
+        "method": "POST",
+        "path": "/designs",
+        "token": "invalid",
+        "status": 419
+      },
+      {
+        "method": "PUT",
+        "path": "/designs/1",
+        "token": "missing",
+        "status": 419
+      },
+      {
+        "method": "PUT",
+        "path": "/designs/1",
+        "token": "invalid",
+        "status": 419
+      },
+      {
+        "method": "DELETE",
+        "path": "/designs/1",
+        "token": "missing",
+        "status": 419
+      },
+      {
+        "method": "DELETE",
+        "path": "/designs/1",
+        "token": "invalid",
+        "status": 419
+      },
+      {
+        "method": "PUT",
+        "path": "/settings/profile",
+        "token": "missing",
+        "status": 419
+      },
+      {
+        "method": "PUT",
+        "path": "/settings/profile",
+        "token": "invalid",
+        "status": 419
+      },
+      {
+        "method": "DELETE",
+        "path": "/settings/profile",
+        "token": "missing",
+        "status": 419
+      },
+      {
+        "method": "DELETE",
+        "path": "/settings/profile",
+        "token": "invalid",
+        "status": 419
+      },
+      {
+        "method": "PUT",
+        "path": "/settings/password",
+        "token": "missing",
+        "status": 419
+      },
+      {
+        "method": "PUT",
+        "path": "/settings/password",
+        "token": "invalid",
+        "status": 419
+      },
+      {
+        "method": "PUT",
+        "path": "/settings/appearance",
+        "token": "missing",
+        "status": 419
+      },
+      {
+        "method": "PUT",
+        "path": "/settings/appearance",
+        "token": "invalid",
+        "status": 419
+      },
+      {
+        "method": "POST",
+        "path": "/logout",
+        "token": "missing",
+        "status": 419
+      },
+      {
+        "method": "POST",
+        "path": "/logout",
+        "token": "invalid",
+        "status": 419
+      }
+    ]
+  },
+  {
+    "role": "viewer",
+    "users_menu": false,
+    "users_page": 403
+  }
+]

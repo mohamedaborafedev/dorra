@@ -1,0 +1,43 @@
+﻿Previous thumbnail paths saved privately: D:\New folder\dorra-clean-install-20261028-163606\storage\app/private/backups/design-thumbnails-20261028-134319-8a5b7eae.jsonl
+[
+    {
+        "thumbnail": "clothing\/clothing-01.jpg",
+        "total": 10030
+    },
+    {
+        "thumbnail": "clothing\/clothing-02.jpg",
+        "total": 9923
+    },
+    {
+        "thumbnail": "clothing\/clothing-03.jpg",
+        "total": 9986
+    },
+    {
+        "thumbnail": "clothing\/clothing-04.jpg",
+        "total": 10072
+    },
+    {
+        "thumbnail": "clothing\/clothing-05.jpg",
+        "total": 9956
+    },
+    {
+        "thumbnail": "clothing\/clothing-06.jpg",
+        "total": 9845
+    },
+    {
+        "thumbnail": "clothing\/clothing-07.jpg",
+        "total": 9853
+    },
+    {
+        "thumbnail": "clothing\/clothing-08.jpg",
+        "total": 10123
+    },
+    {
+        "thumbnail": "clothing\/clothing-09.jpg",
+        "total": 10175
+    },
+    {
+        "thumbnail": "clothing\/clothing-10.jpg",
+        "total": 10037
+    }
+]

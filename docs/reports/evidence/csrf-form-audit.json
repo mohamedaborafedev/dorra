@@ -1,0 +1,292 @@
+[
+  {
+    "path": "/users",
+    "forms": [
+      {
+        "method": "post",
+        "action": "/settings/appearance",
+        "hasCsrf": true
+      },
+      {
+        "method": "post",
+        "action": "/logout",
+        "hasCsrf": true
+      },
+      {
+        "method": "post",
+        "action": "/users/3",
+        "hasCsrf": true
+      },
+      {
+        "method": "post",
+        "action": "/users/1",
+        "hasCsrf": true
+      }
+    ]
+  },
+  {
+    "path": "/users/create",
+    "forms": [
+      {
+        "method": "post",
+        "action": "/settings/appearance",
+        "hasCsrf": true
+      },
+      {
+        "method": "post",
+        "action": "/logout",
+        "hasCsrf": true
+      },
+      {
+        "method": "post",
+        "action": "/users",
+        "hasCsrf": true
+      }
+    ]
+  },
+  {
+    "path": "/users/3/edit",
+    "forms": [
+      {
+        "method": "post",
+        "action": "/settings/appearance",
+        "hasCsrf": true
+      },
+      {
+        "method": "post",
+        "action": "/logout",
+        "hasCsrf": true
+      },
+      {
+        "method": "post",
+        "action": "/users/3",
+        "hasCsrf": true
+      }
+    ]
+  },
+  {
+    "path": "/dashboard",
+    "forms": [
+      {
+        "method": "post",
+        "action": "/settings/appearance",
+        "hasCsrf": true
+      },
+      {
+        "method": "post",
+        "action": "/logout",
+        "hasCsrf": true
+      },
+      {
+        "method": "get",
+        "action": "/dashboard",
+        "hasCsrf": false
+      },
+      {
+        "method": "post",
+        "action": "/designs/88612",
+        "hasCsrf": true
+      },
+      {
+        "method": "post",
+        "action": "/designs/64718",
+        "hasCsrf": true
+      },
+      {
+        "method": "post",
+        "action": "/designs/40824",
+        "hasCsrf": true
+      },
+      {
+        "method": "post",
+        "action": "/designs/16930",
+        "hasCsrf": true
+      },
+      {
+        "method": "post",
+        "action": "/designs/80647",
+        "hasCsrf": true
+      },
+      {
+        "method": "post",
+        "action": "/designs/56753",
+        "hasCsrf": true
+      },
+      {
+        "method": "post",
+        "action": "/designs/32859",
+        "hasCsrf": true
+      },
+      {
+        "method": "post",
+        "action": "/designs/8965",
+        "hasCsrf": true
+      },
+      {
+        "method": "post",
+        "action": "/designs/96576",
+        "hasCsrf": true
+      },
+      {
+        "method": "post",
+        "action": "/designs/72682",
+        "hasCsrf": true
+      },
+      {
+        "method": "post",
+        "action": "/designs/48788",
+        "hasCsrf": true
+      },
+      {
+        "method": "post",
+        "action": "/designs/24894",
+        "hasCsrf": true
+      },
+      {
+        "method": "post",
+        "action": "/designs/88611",
+        "hasCsrf": true
+      },
+      {
+        "method": "post",
+        "action": "/designs/64717",
+        "hasCsrf": true
+      },
+      {
+        "method": "post",
+        "action": "/designs/40823",
+        "hasCsrf": true
+      },
+      {
+        "method": "post",
+        "action": "/designs/16929",
+        "hasCsrf": true
+      },
+      {
+        "method": "post",
+        "action": "/designs/80646",
+        "hasCsrf": true
+      },
+      {
+        "method": "post",
+        "action": "/designs/56752",
+        "hasCsrf": true
+      },
+      {
+        "method": "post",
+        "action": "/designs/32858",
+        "hasCsrf": true
+      },
+      {
+        "method": "post",
+        "action": "/designs/8964",
+        "hasCsrf": true
+      },
+      {
+        "method": "post",
+        "action": "/designs/96575",
+        "hasCsrf": true
+      },
+      {
+        "method": "post",
+        "action": "/designs/72681",
+        "hasCsrf": true
+      },
+      {
+        "method": "post",
+        "action": "/designs/48787",
+        "hasCsrf": true
+      },
+      {
+        "method": "post",
+        "action": "/designs/24893",
+        "hasCsrf": true
+      }
+    ]
+  },
+  {
+    "path": "/designs/create",
+    "forms": [
+      {
+        "method": "post",
+        "action": "/settings/appearance",
+        "hasCsrf": true
+      },
+      {
+        "method": "post",
+        "action": "/logout",
+        "hasCsrf": true
+      },
+      {
+        "method": "post",
+        "action": "/designs",
+        "hasCsrf": true
+      }
+    ]
+  },
+  {
+    "path": "/settings/profile",
+    "forms": [
+      {
+        "method": "post",
+        "action": "/settings/appearance",
+        "hasCsrf": true
+      },
+      {
+        "method": "post",
+        "action": "/logout",
+        "hasCsrf": true
+      },
+      {
+        "method": "post",
+        "action": "/settings/profile",
+        "hasCsrf": true
+      },
+      {
+        "method": "post",
+        "action": "/settings/profile",
+        "hasCsrf": true
+      }
+    ]
+  },
+  {
+    "path": "/settings/password",
+    "forms": [
+      {
+        "method": "post",
+        "action": "/settings/appearance",
+        "hasCsrf": true
+      },
+      {
+        "method": "post",
+        "action": "/logout",
+        "hasCsrf": true
+      },
+      {
+        "method": "post",
+        "action": "/settings/password",
+        "hasCsrf": true
+      }
+    ]
+  },
+  {
+    "path": "/settings/appearance",
+    "forms": [
+      {
+        "method": "post",
+        "action": "/settings/appearance",
+        "hasCsrf": true
+      },
+      {
+        "method": "post",
+        "action": "/logout",
+        "hasCsrf": true
+      },
+      {
+        "method": "post",
+        "action": "/settings/appearance",
+        "hasCsrf": true
+      }
+    ]
+  }
+]

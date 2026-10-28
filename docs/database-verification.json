@@ -1,0 +1,628 @@
+﻿{
+    "server": {
+        "version": "8.4.3",
+        "database_name": "dorra",
+        "session_timezone": "+00:00"
+    },
+    "counts": {
+        "users": 3,
+        "categories": 10,
+        "designs": 100000,
+        "arabic_titles": 50000,
+        "english_titles": 50000,
+        "distinct_created_at": 100000,
+        "orphan_designs": 0
+    },
+    "roles": [
+        {
+            "role": "viewer",
+            "total": 2
+        },
+        {
+            "role": "admin",
+            "total": 1
+        }
+    ],
+    "statuses": [
+        {
+            "status": "draft",
+            "total": 50001
+        },
+        {
+            "status": "published",
+            "total": 49999
+        }
+    ],
+    "schema": {
+        "users": {
+            "columns": [
+                {
+                    "name": "id",
+                    "type_name": "bigint",
+                    "type": "bigint unsigned",
+                    "collation": null,
+                    "nullable": false,
+                    "default": null,
+                    "auto_increment": true,
+                    "comment": null,
+                    "generation": null
+                },
+                {
+                    "name": "name",
+                    "type_name": "varchar",
+                    "type": "varchar(255)",
+                    "collation": "utf8mb4_unicode_ci",
+                    "nullable": false,
+                    "default": null,
+                    "auto_increment": false,
+                    "comment": null,
+                    "generation": null
+                },
+                {
+                    "name": "email",
+                    "type_name": "varchar",
+                    "type": "varchar(255)",
+                    "collation": "utf8mb4_unicode_ci",
+                    "nullable": false,
+                    "default": null,
+                    "auto_increment": false,
+                    "comment": null,
+                    "generation": null
+                },
+                {
+                    "name": "email_verified_at",
+                    "type_name": "timestamp",
+                    "type": "timestamp",
+                    "collation": null,
+                    "nullable": true,
+                    "default": null,
+                    "auto_increment": false,
+                    "comment": null,
+                    "generation": null
+                },
+                {
+                    "name": "password",
+                    "type_name": "varchar",
+                    "type": "varchar(255)",
+                    "collation": "utf8mb4_unicode_ci",
+                    "nullable": false,
+                    "default": null,
+                    "auto_increment": false,
+                    "comment": null,
+                    "generation": null
+                },
+                {
+                    "name": "theme_preference",
+                    "type_name": "varchar",
+                    "type": "varchar(255)",
+                    "collation": "utf8mb4_unicode_ci",
+                    "nullable": true,
+                    "default": "system",
+                    "auto_increment": false,
+                    "comment": null,
+                    "generation": null
+                },
+                {
+                    "name": "remember_token",
+                    "type_name": "varchar",
+                    "type": "varchar(100)",
+                    "collation": "utf8mb4_unicode_ci",
+                    "nullable": true,
+                    "default": null,
+                    "auto_increment": false,
+                    "comment": null,
+                    "generation": null
+                },
+                {
+                    "name": "created_at",
+                    "type_name": "timestamp",
+                    "type": "timestamp",
+                    "collation": null,
+                    "nullable": true,
+                    "default": null,
+                    "auto_increment": false,
+                    "comment": null,
+                    "generation": null
+                },
+                {
+                    "name": "updated_at",
+                    "type_name": "timestamp",
+                    "type": "timestamp",
+                    "collation": null,
+                    "nullable": true,
+                    "default": null,
+                    "auto_increment": false,
+                    "comment": null,
+                    "generation": null
+                },
+                {
+                    "name": "role",
+                    "type_name": "varchar",
+                    "type": "varchar(20)",
+                    "collation": "utf8mb4_unicode_ci",
+                    "nullable": false,
+                    "default": "viewer",
+                    "auto_increment": false,
+                    "comment": null,
+                    "generation": null
+                }
+            ],
+            "indexes": [
+                {
+                    "Table": "users",
+                    "Non_unique": 0,
+                    "Key_name": "PRIMARY",
+                    "Seq_in_index": 1,
+                    "Column_name": "id",
+                    "Collation": "A",
+                    "Cardinality": 1,
+                    "Sub_part": null,
+                    "Packed": null,
+                    "Null": "",
+                    "Index_type": "BTREE",
+                    "Comment": "",
+                    "Index_comment": "",
+                    "Visible": "YES",
+                    "Expression": null
+                },
+                {
+                    "Table": "users",
+                    "Non_unique": 0,
+                    "Key_name": "users_email_unique",
+                    "Seq_in_index": 1,
+                    "Column_name": "email",
+                    "Collation": "A",
+                    "Cardinality": 1,
+                    "Sub_part": null,
+                    "Packed": null,
+                    "Null": "",
+                    "Index_type": "BTREE",
+                    "Comment": "",
+                    "Index_comment": "",
+                    "Visible": "YES",
+                    "Expression": null
+                }
+            ],
+            "foreign_keys": [],
+            "create": {
+                "Table": "users",
+                "Create Table": "CREATE TABLE `users` (\n  `id` bigint unsigned NOT NULL AUTO_INCREMENT,\n  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,\n  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,\n  `email_verified_at` timestamp NULL DEFAULT NULL,\n  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,\n  `theme_preference` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'system',\n  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,\n  `created_at` timestamp NULL DEFAULT NULL,\n  `updated_at` timestamp NULL DEFAULT NULL,\n  `role` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'viewer',\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `users_email_unique` (`email`),\n  CONSTRAINT `chk_users_role` CHECK ((`role` in (_utf8mb4'admin',_utf8mb4'viewer')))\n) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
+            }
+        },
+        "categories": {
+            "columns": [
+                {
+                    "name": "id",
+                    "type_name": "bigint",
+                    "type": "bigint unsigned",
+                    "collation": null,
+                    "nullable": false,
+                    "default": null,
+                    "auto_increment": true,
+                    "comment": null,
+                    "generation": null
+                },
+                {
+                    "name": "name",
+                    "type_name": "varchar",
+                    "type": "varchar(255)",
+                    "collation": "utf8mb4_unicode_ci",
+                    "nullable": false,
+                    "default": null,
+                    "auto_increment": false,
+                    "comment": null,
+                    "generation": null
+                },
+                {
+                    "name": "slug",
+                    "type_name": "varchar",
+                    "type": "varchar(255)",
+                    "collation": "utf8mb4_unicode_ci",
+                    "nullable": false,
+                    "default": null,
+                    "auto_increment": false,
+                    "comment": null,
+                    "generation": null
+                },
+                {
+                    "name": "created_at",
+                    "type_name": "timestamp",
+                    "type": "timestamp",
+                    "collation": null,
+                    "nullable": true,
+                    "default": null,
+                    "auto_increment": false,
+                    "comment": null,
+                    "generation": null
+                },
+                {
+                    "name": "updated_at",
+                    "type_name": "timestamp",
+                    "type": "timestamp",
+                    "collation": null,
+                    "nullable": true,
+                    "default": null,
+                    "auto_increment": false,
+                    "comment": null,
+                    "generation": null
+                }
+            ],
+            "indexes": [
+                {
+                    "Table": "categories",
+                    "Non_unique": 0,
+                    "Key_name": "PRIMARY",
+                    "Seq_in_index": 1,
+                    "Column_name": "id",
+                    "Collation": "A",
+                    "Cardinality": 10,
+                    "Sub_part": null,
+                    "Packed": null,
+                    "Null": "",
+                    "Index_type": "BTREE",
+                    "Comment": "",
+                    "Index_comment": "",
+                    "Visible": "YES",
+                    "Expression": null
+                },
+                {
+                    "Table": "categories",
+                    "Non_unique": 0,
+                    "Key_name": "categories_slug_unique",
+                    "Seq_in_index": 1,
+                    "Column_name": "slug",
+                    "Collation": "A",
+                    "Cardinality": 10,
+                    "Sub_part": null,
+                    "Packed": null,
+                    "Null": "",
+                    "Index_type": "BTREE",
+                    "Comment": "",
+                    "Index_comment": "",
+                    "Visible": "YES",
+                    "Expression": null
+                }
+            ],
+            "foreign_keys": [],
+            "create": {
+                "Table": "categories",
+                "Create Table": "CREATE TABLE `categories` (\n  `id` bigint unsigned NOT NULL AUTO_INCREMENT,\n  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,\n  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,\n  `created_at` timestamp NULL DEFAULT NULL,\n  `updated_at` timestamp NULL DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `categories_slug_unique` (`slug`)\n) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
+            }
+        },
+        "designs": {
+            "columns": [
+                {
+                    "name": "id",
+                    "type_name": "bigint",
+                    "type": "bigint unsigned",
+                    "collation": null,
+                    "nullable": false,
+                    "default": null,
+                    "auto_increment": true,
+                    "comment": null,
+                    "generation": null
+                },
+                {
+                    "name": "category_id",
+                    "type_name": "bigint",
+                    "type": "bigint unsigned",
+                    "collation": null,
+                    "nullable": false,
+                    "default": null,
+                    "auto_increment": false,
+                    "comment": null,
+                    "generation": null
+                },
+                {
+                    "name": "title",
+                    "type_name": "varchar",
+                    "type": "varchar(255)",
+                    "collation": "utf8mb4_unicode_ci",
+                    "nullable": false,
+                    "default": null,
+                    "auto_increment": false,
+                    "comment": null,
+                    "generation": null
+                },
+                {
+                    "name": "status",
+                    "type_name": "varchar",
+                    "type": "varchar(20)",
+                    "collation": "utf8mb4_unicode_ci",
+                    "nullable": false,
+                    "default": "draft",
+                    "auto_increment": false,
+                    "comment": null,
+                    "generation": null
+                },
+                {
+                    "name": "thumbnail",
+                    "type_name": "varchar",
+                    "type": "varchar(255)",
+                    "collation": "utf8mb4_unicode_ci",
+                    "nullable": true,
+                    "default": null,
+                    "auto_increment": false,
+                    "comment": null,
+                    "generation": null
+                },
+                {
+                    "name": "created_at",
+                    "type_name": "timestamp",
+                    "type": "timestamp",
+                    "collation": null,
+                    "nullable": true,
+                    "default": null,
+                    "auto_increment": false,
+                    "comment": null,
+                    "generation": null
+                },
+                {
+                    "name": "updated_at",
+                    "type_name": "timestamp",
+                    "type": "timestamp",
+                    "collation": null,
+                    "nullable": true,
+                    "default": null,
+                    "auto_increment": false,
+                    "comment": null,
+                    "generation": null
+                }
+            ],
+            "indexes": [
+                {
+                    "Table": "designs",
+                    "Non_unique": 0,
+                    "Key_name": "PRIMARY",
+                    "Seq_in_index": 1,
+                    "Column_name": "id",
+                    "Collation": "A",
+                    "Cardinality": 99456,
+                    "Sub_part": null,
+                    "Packed": null,
+                    "Null": "",
+                    "Index_type": "BTREE",
+                    "Comment": "",
+                    "Index_comment": "",
+                    "Visible": "YES",
+                    "Expression": null
+                },
+                {
+                    "Table": "designs",
+                    "Non_unique": 1,
+                    "Key_name": "idx_designs_category_status_created",
+                    "Seq_in_index": 1,
+                    "Column_name": "category_id",
+                    "Collation": "A",
+                    "Cardinality": 9,
+                    "Sub_part": null,
+                    "Packed": null,
+                    "Null": "",
+                    "Index_type": "BTREE",
+                    "Comment": "",
+                    "Index_comment": "",
+                    "Visible": "YES",
+                    "Expression": null
+                },
+                {
+                    "Table": "designs",
+                    "Non_unique": 1,
+                    "Key_name": "idx_designs_category_status_created",
+                    "Seq_in_index": 2,
+                    "Column_name": "status",
+                    "Collation": "A",
+                    "Cardinality": 19,
+                    "Sub_part": null,
+                    "Packed": null,
+                    "Null": "",
+                    "Index_type": "BTREE",
+                    "Comment": "",
+                    "Index_comment": "",
+                    "Visible": "YES",
+                    "Expression": null
+                },
+                {
+                    "Table": "designs",
+                    "Non_unique": 1,
+                    "Key_name": "idx_designs_category_status_created",
+                    "Seq_in_index": 3,
+                    "Column_name": "created_at",
+                    "Collation": "A",
+                    "Cardinality": 97320,
+                    "Sub_part": null,
+                    "Packed": null,
+                    "Null": "YES",
+                    "Index_type": "BTREE",
+                    "Comment": "",
+                    "Index_comment": "",
+                    "Visible": "YES",
+                    "Expression": null
+                },
+                {
+                    "Table": "designs",
+                    "Non_unique": 1,
+                    "Key_name": "idx_designs_category_status_created",
+                    "Seq_in_index": 4,
+                    "Column_name": "id",
+                    "Collation": "A",
+                    "Cardinality": 99456,
+                    "Sub_part": null,
+                    "Packed": null,
+                    "Null": "",
+                    "Index_type": "BTREE",
+                    "Comment": "",
+                    "Index_comment": "",
+                    "Visible": "YES",
+                    "Expression": null
+                },
+                {
+                    "Table": "designs",
+                    "Non_unique": 1,
+                    "Key_name": "idx_designs_title",
+                    "Seq_in_index": 1,
+                    "Column_name": "title",
+                    "Collation": "A",
+                    "Cardinality": 94069,
+                    "Sub_part": null,
+                    "Packed": null,
+                    "Null": "",
+                    "Index_type": "BTREE",
+                    "Comment": "",
+                    "Index_comment": "",
+                    "Visible": "YES",
+                    "Expression": null
+                },
+                {
+                    "Table": "designs",
+                    "Non_unique": 1,
+                    "Key_name": "idx_designs_created_id",
+                    "Seq_in_index": 1,
+                    "Column_name": "created_at",
+                    "Collation": "A",
+                    "Cardinality": 99456,
+                    "Sub_part": null,
+                    "Packed": null,
+                    "Null": "YES",
+                    "Index_type": "BTREE",
+                    "Comment": "",
+                    "Index_comment": "",
+                    "Visible": "YES",
+                    "Expression": null
+                },
+                {
+                    "Table": "designs",
+                    "Non_unique": 1,
+                    "Key_name": "idx_designs_created_id",
+                    "Seq_in_index": 2,
+                    "Column_name": "id",
+                    "Collation": "A",
+                    "Cardinality": 99456,
+                    "Sub_part": null,
+                    "Packed": null,
+                    "Null": "",
+                    "Index_type": "BTREE",
+                    "Comment": "",
+                    "Index_comment": "",
+                    "Visible": "YES",
+                    "Expression": null
+                }
+            ],
+            "foreign_keys": [
+                {
+                    "name": "designs_category_id_foreign",
+                    "columns": [
+                        "category_id"
+                    ],
+                    "foreign_schema": "dorra",
+                    "foreign_table": "categories",
+                    "foreign_columns": [
+                        "id"
+                    ],
+                    "on_update": "no action",
+                    "on_delete": "restrict"
+                }
+            ],
+            "create": {
+                "Table": "designs",
+                "Create Table": "CREATE TABLE `designs` (\n  `id` bigint unsigned NOT NULL AUTO_INCREMENT,\n  `category_id` bigint unsigned NOT NULL,\n  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,\n  `status` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'draft',\n  `thumbnail` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,\n  `created_at` timestamp NULL DEFAULT NULL,\n  `updated_at` timestamp NULL DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  KEY `idx_designs_category_status_created` (`category_id`,`status`,`created_at`,`id`),\n  KEY `idx_designs_title` (`title`),\n  KEY `idx_designs_created_id` (`created_at`,`id`),\n  CONSTRAINT `designs_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE RESTRICT,\n  CONSTRAINT `chk_designs_status` CHECK ((`status` in (_utf8mb4'draft',_utf8mb4'published')))\n) ENGINE=InnoDB AUTO_INCREMENT=101002 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
+            }
+        }
+    },
+    "explain": {
+        "category_status": {
+            "sql": "SELECT * FROM designs WHERE category_id = 3 AND status = 'published' ORDER BY created_at DESC, id DESC LIMIT 24",
+            "plan": [
+                {
+                    "id": 1,
+                    "select_type": "SIMPLE",
+                    "table": "designs",
+                    "partitions": null,
+                    "type": "ref",
+                    "possible_keys": "idx_designs_category_status_created",
+                    "key": "idx_designs_category_status_created",
+                    "key_len": "90",
+                    "ref": "const,const",
+                    "rows": 6302,
+                    "filtered": 100,
+                    "Extra": "Backward index scan"
+                }
+            ]
+        },
+        "prefix": {
+            "sql": "SELECT * FROM designs WHERE title LIKE 'Modern%' ORDER BY created_at DESC, id DESC LIMIT 24",
+            "plan": [
+                {
+                    "id": 1,
+                    "select_type": "SIMPLE",
+                    "table": "designs",
+                    "partitions": null,
+                    "type": "index",
+                    "possible_keys": "idx_designs_title",
+                    "key": "idx_designs_created_id",
+                    "key_len": "13",
+                    "ref": null,
+                    "rows": 113,
+                    "filtered": 21.058557510375977,
+                    "Extra": "Using where; Backward index scan"
+                }
+            ]
+        },
+        "newest": {
+            "sql": "SELECT * FROM designs ORDER BY created_at DESC, id DESC LIMIT 24",
+            "plan": [
+                {
+                    "id": 1,
+                    "select_type": "SIMPLE",
+                    "table": "designs",
+                    "partitions": null,
+                    "type": "index",
+                    "possible_keys": null,
+                    "key": "idx_designs_created_id",
+                    "key_len": "13",
+                    "ref": null,
+                    "rows": 24,
+                    "filtered": 100,
+                    "Extra": "Backward index scan"
+                }
+            ]
+        },
+        "category_only": {
+            "sql": "SELECT * FROM designs WHERE category_id = 3 ORDER BY created_at DESC, id DESC LIMIT 24",
+            "plan": [
+                {
+                    "id": 1,
+                    "select_type": "SIMPLE",
+                    "table": "designs",
+                    "partitions": null,
+                    "type": "index",
+                    "possible_keys": "idx_designs_category_status_created",
+                    "key": "idx_designs_created_id",
+                    "key_len": "13",
+                    "ref": null,
+                    "rows": 133,
+                    "filtered": 18.007963180541992,
+                    "Extra": "Using where; Backward index scan"
+                }
+            ]
+        },
+        "status_only": {
+            "sql": "SELECT * FROM designs WHERE status = 'published' ORDER BY created_at DESC, id DESC LIMIT 24",
+            "plan": [
+                {
+                    "id": 1,
+                    "select_type": "SIMPLE",
+                    "table": "designs",
+                    "partitions": null,
+                    "type": "index",
+                    "possible_keys": null,
+                    "key": "idx_designs_created_id",
+                    "key_len": "13",
+                    "ref": null,
+                    "rows": 24,
+                    "filtered": 10,
+                    "Extra": "Using where; Backward index scan"
+                }
+            ]
+        }
+    }
+}

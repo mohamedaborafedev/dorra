@@ -1,0 +1,5 @@
+{
+  "directory": "D:\\New folder\\dorra-clean-install-20261028-163606",
+  "database": "dorra_install_verify_20261028_163606",
+  "note": "Separate source copy; no vendor/node_modules or existing .env reused. Same Windows machine/toolchain."
+}

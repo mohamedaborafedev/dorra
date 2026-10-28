@@ -1,0 +1,41 @@
+php artisan key:generate --no-interaction --no-ansi
+
+   INFO  Application key set successfully.  
+
+php artisan migrate --no-interaction --no-ansi
+
+   INFO  Preparing database.  
+
+  Creating migration table .............................................................................. 25.35ms DONE
+
+   INFO  Running migrations.  
+
+  0001_01_01_000000_create_users_table ................................................................. 137.05ms DONE
+  0001_01_01_000001_create_cache_table .................................................................. 35.52ms DONE
+  0001_01_01_000002_create_jobs_table .................................................................. 106.27ms DONE
+  2026_02_09_000925_add_theme_preference_to_users_table ................................................. 14.35ms DONE
+  2026_10_28_000001_add_role_to_users_table ............................................................. 77.75ms DONE
+  2026_10_28_000002_create_categories_table ............................................................. 34.47ms DONE
+  2026_10_28_000003_create_designs_table ............................................................... 175.48ms DONE
+
+php artisan db:seed --no-interaction --no-ansi
+
+   INFO  Seeding database.  
+
+  Database\Seeders\CategorySeeder ............................................................................ RUNNING  
+  Database\Seeders\CategorySeeder ......................................................................... 48 ms DONE  
+
+  Database\Seeders\UserSeeder ................................................................................ RUNNING  
+  Database\Seeders\UserSeeder ............................................................................ 501 ms DONE  
+
+php artisan db:seed --class=DesignSeeder --no-interaction --no-ansi
+
+   INFO  Seeding database.  
+
+  Database\Seeders\CategorySeeder ............................................................................ RUNNING  
+  Database\Seeders\CategorySeeder ......................................................................... 26 ms DONE  
+
+php artisan storage:link --no-ansi
+
+   INFO  The [D:\New folder\dorra-clean-install-20261028-163606\public\storage] link has been connected to [D:\New folder\dorra-clean-install-20261028-163606\storage\app/public].  
+
